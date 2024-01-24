@@ -1,3 +1,55 @@
-[gd_scene format=3 uid="uid://dvh2ahuc5hvmc"]
+[gd_scene load_steps=11 format=3 uid="uid://dvh2ahuc5hvmc"]
+
+[ext_resource type="PackedScene" uid="uid://bgnq4uxdi5eum" path="res://scenes/Warrior.tscn" id="1_xj1ue"]
+[ext_resource type="Texture2D" uid="uid://b6lht05s63jpn" path="res://assets/images/wall_background.jpg" id="2_ugn04"]
+[ext_resource type="Texture2D" uid="uid://bfsqvv3by5bdj" path="res://assets/images/grass_ground_topview.jpg" id="3_5haoy"]
+[ext_resource type="Texture2D" uid="uid://1uh8rjuqgnci" path="res://assets/images/box_face.png" id="4_6aajr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6p73"]
+albedo_texture = ExtResource("2_ugn04")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bawmp"]
+material = SubResource("StandardMaterial3D_f6p73")
+size = Vector2(50, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pr2jn"]
+albedo_texture = ExtResource("3_5haoy")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ja6x1"]
+material = SubResource("StandardMaterial3D_pr2jn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vnee"]
+albedo_texture = ExtResource("4_6aajr")
+uv1_scale = Vector3(3, 2, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qb5ta"]
+material = SubResource("StandardMaterial3D_1vnee")
+size = Vector3(5, 5, 5)
 
 [node name="Main" type="Node3D"]
+
+[node name="Character" type="Node3D" parent="."]
+transform = Transform3D(-2.18557e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.18557e-09, 0, -0.85, 12)
+
+[node name="Warrior" parent="Character" instance=ExtResource("1_xj1ue")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 130, 0, 30)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 8, 32)
+projection = 1
+size = 25.0
+
+[node name="Background - MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+mesh = SubResource("QuadMesh_bawmp")
+
+[node name="Ground - MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -8.74228e-06, 50, 0, -200, -2.18557e-06, 0, -5, 5)
+mesh = SubResource("QuadMesh_ja6x1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.865676, 0.500604, 0, -0.500604, 0.865676, 0, 0, 0)
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -7.5, -2.5, 15)
+mesh = SubResource("BoxMesh_qb5ta")
