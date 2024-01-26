@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bigba"]
 [ext_resource type="PackedScene" uid="uid://bgnq4uxdi5eum" path="res://scenes/Warrior.tscn" id="1_xj1ue"]
-[ext_resource type="Texture2D" uid="uid://b6lht05s63jpn" path="res://assets/images/wall_background.jpg" id="2_ugn04"]
+[ext_resource type="Texture2D" uid="uid://c4jkv5f00atyu" path="res://assets/images/wall_inf.jpg" id="3_2m3gj"]
 [ext_resource type="Texture2D" uid="uid://1uh8rjuqgnci" path="res://assets/images/box_face.png" id="4_6aajr"]
 [ext_resource type="Texture2D" uid="uid://s8pnjsg6oou" path="res://assets/images/street_inf.jpg" id="4_fsybx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6p73"]
-albedo_texture = ExtResource("2_ugn04")
+albedo_texture = ExtResource("3_2m3gj")
 
 [sub_resource type="QuadMesh" id="QuadMesh_bawmp"]
 material = SubResource("StandardMaterial3D_f6p73")
@@ -38,44 +38,40 @@ script = ExtResource("1_bigba")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 12)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 13, 32)
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 13, 33)
 projection = 1
 current = true
 size = 25.0
 
 [node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 23, 13, 32)
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 23, 13, 33)
 projection = 1
 size = 25.0
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -5)
 
-[node name="Background - MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
+[node name="Background - MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D1"]
 mesh = SubResource("QuadMesh_bawmp")
 skeleton = NodePath("../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D1"]
 shape = SubResource("ConcavePolygonShape3D_0nape")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -0.15, -5)
 
 [node name="Background - MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
 mesh = SubResource("QuadMesh_bawmp")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
 shape = SubResource("ConcavePolygonShape3D_0nape")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, -0.15, -5)
 
 [node name="Background - MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
 mesh = SubResource("QuadMesh_bawmp")
 skeleton = NodePath("../..")
 
@@ -83,7 +79,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
 shape = SubResource("ConcavePolygonShape3D_0nape")
 
-[node name="Ground - MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Ground - MeshInstance3D1" type="MeshInstance3D" parent="."]
 transform = Transform3D(50, 0, 0, 0, -4.37114e-06, 50, 0, -100, -2.18557e-06, 0, 0, -4.5)
 mesh = SubResource("QuadMesh_ja6x1")
 
@@ -105,6 +101,5 @@ transform = Transform3D(3.90518, 0, 0.865758, 0, 4, 0, -0.865758, 0, 3.90518, 10
 shape = SubResource("BoxShape3D_72sru")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_qb5ta")
 skeleton = NodePath("../..")
