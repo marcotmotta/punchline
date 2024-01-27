@@ -1,8 +1,8 @@
 extends Node3D
 
 func _process(delta):
-	if $Player.position.x >= $Camera3D.position.x:
-		$Camera3D.position.x = $Player.position.x
+	#if $Player.position.x >= $Camera3D.position.x:
+	$Camera3D.position.x = $Player.position.x
 
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("f1"):
