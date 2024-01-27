@@ -15,16 +15,17 @@ func _physics_process(delta):
 
 	if !is_attacking:
 		direction.x = input_dir.x
-		direction.z = -input_dir.y
+		direction.z = input_dir.y
 
-		if velocity:
-			look_at(global_position - velocity.normalized())
+		if direction:
+			if direction.x:
+				look_at(global_position + Vector3(-direction.x, 0, 0))
 			$AnimationPlayer.play('Walk')
 		else:
 			$AnimationPlayer.play('Idle')
 
 	velocity.x = direction.x * 10
-	velocity.z = -direction.z * 10 * 2
+	velocity.z = direction.z * 10 * 2
 	velocity.y = 0
 
 	move_and_slide()
