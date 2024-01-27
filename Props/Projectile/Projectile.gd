@@ -2,7 +2,7 @@ extends Area3D
 
 var pos
 var direction
-var speed = 5
+var speed = 10
 
 func _ready() -> void:
 	if pos:

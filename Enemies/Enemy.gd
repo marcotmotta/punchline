@@ -12,6 +12,7 @@ var state := States.IDLE
 
 @export var target: CharacterBody3D
 
+var remaining_idle_time: float
 var patrol_direction: Vector3
 
 func _ready() -> void:
@@ -42,23 +43,21 @@ func set_state(new_state: States) -> void:
 
 	match state:
 		States.IDLE:
-			#$AnimationPlayer.play('Idle')
-			pass
+			$AnimationPlayer.play('P_Idle')
 
 		States.RUNNING:
-			#$AnimationPlayer.play('Idle')
-			pass
+			$AnimationPlayer.play('P_Aiming_Walk')
 
 		States.PATROL:
 			patrol_direction = choose_patrol_direction()
-			$PatrolTimer.start()
+			if patrol_direction == Vector3.ZERO:
+				set_state(States.IDLE)
+			else:
+				$AnimationPlayer.play('P_Aiming_Walk')
+				$PatrolTimer.start()
 
 		States.ATTACKING:
-			if target.global_position.x < global_position.x:
-				$RangedAttackComponent.shoot(Vector3(-1, 0, 0))
-			else:
-				$RangedAttackComponent.shoot(Vector3(1, 0, 0))
-			set_state(States.PATROL)
+			$AnimationPlayer.play('P_Throw_Pie')
 
 		States.HURT:
 			pass
@@ -67,6 +66,9 @@ func move_to_direction(patrol_direction):
 	var direction = Vector3.ZERO
 
 	direction = patrol_direction.normalized()
+	
+	if direction.x:
+		look_at(global_position + Vector3(-direction.x, 0, 0))
 
 	velocity.x = direction.x * 5
 	velocity.z = direction.z * 5 * 2
@@ -79,6 +81,9 @@ func move_to_target_height() -> void:
 
 	direction = (target.global_position - global_position).normalized()
 
+	if direction.x:
+		look_at(global_position + Vector3(-direction.x, 0, 0))
+
 	velocity.x = 0 #direction.x * 2
 	velocity.z = 5 * 2
 	velocity.y = 0
@@ -90,6 +95,7 @@ func move_to_target_height() -> void:
 
 func check_end_move_height() -> void:
 	if abs(global_position.z - target.global_position.z) <= 3:
+		$AnimationPlayer.stop()
 		set_state(States.ATTACKING)
 
 func choose_patrol_direction() -> Vector3:
@@ -97,3 +103,12 @@ func choose_patrol_direction() -> Vector3:
 
 func _on_patrol_timer_timeout():
 	set_state(States.RUNNING)
+
+func begin_attack():
+	$RangedAttackComponent.begin_attack(target, set_state, States.PATROL)
+
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == 'P_Throw_Pie':
+		set_state(States.PATROL)
+	elif anim_name == 'P_Idle':
+		set_state(States.RUNNING)
