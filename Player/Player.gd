@@ -1,16 +1,32 @@
 extends CharacterBody3D
 
-var is_attacking = false
+const WALK_SPEED_MOD = 10
+const RUN_SPEED_MOD = 5
+const RUN_DURATION_TIME = 1
 
-# Called when the node enters the scene tree for the first time.
+var is_attacking = false
+var is_running = false
+var last_key_pressed = null
+
+# Custom timers.
+var remaining_time_to_press_key = 0
+var remaining_time_to_run = 0
+
 func _ready():
-	pass # Replace with function body.
+	pass
+
+func _process(delta):
+	remaining_time_to_press_key = max(remaining_time_to_press_key - delta, 0)
+	remaining_time_to_run = max(remaining_time_to_run - delta, 0)
+
+	if is_running and remaining_time_to_run == 0:
+		is_running = false
+		last_key_pressed = null
+		remaining_time_to_press_key = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-
 	var input_dir = Input.get_vector("left", "right", "up", "down")
-
 	var direction = Vector3.ZERO
 
 	if !is_attacking:
@@ -24,8 +40,13 @@ func _physics_process(delta):
 		else:
 			$AnimationPlayer.play('Idle')
 
-	velocity.x = direction.x * 10
-	velocity.z = direction.z * 10 * 2
+		direction *= WALK_SPEED_MOD
+
+		if is_running:
+			direction.x *= RUN_SPEED_MOD
+
+	velocity.x = direction.x
+	velocity.z = direction.z * 2
 	velocity.y = 0
 
 	move_and_slide()
@@ -34,6 +55,21 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("z"):
 		is_attacking = true
 		$AnimationPlayer.play('Attack')
+
+	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
+		if last_key_pressed == event.keycode and remaining_time_to_press_key > 0:
+			is_running = true
+			remaining_time_to_run = RUN_DURATION_TIME
+		else:
+			last_key_pressed = event.keycode
+			remaining_time_to_press_key = 1
+
+	if Input.is_action_just_released("left") or Input.is_action_just_released("right"):
+		if is_running:
+			is_running = false
+			last_key_pressed = null
+			remaining_time_to_press_key = 0
+			remaining_time_to_run = 0
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == 'Attack':
