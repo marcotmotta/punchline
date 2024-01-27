@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bigba"]
 [ext_resource type="PackedScene" uid="uid://bgnq4uxdi5eum" path="res://Player/Player.tscn" id="1_xj1ue"]
-[ext_resource type="Texture2D" uid="uid://c4jkv5f00atyu" path="res://assets/images/wall_inf.jpg" id="3_2m3gj"]
-[ext_resource type="Texture2D" uid="uid://1uh8rjuqgnci" path="res://assets/images/box_face.png" id="4_6aajr"]
-[ext_resource type="Texture2D" uid="uid://s8pnjsg6oou" path="res://assets/images/street_inf.jpg" id="4_fsybx"]
+[ext_resource type="Texture2D" uid="uid://c4jkv5f00atyu" path="res://Assets/Images/Temp/wall_inf.jpg" id="3_2m3gj"]
+[ext_resource type="Texture2D" uid="uid://1uh8rjuqgnci" path="res://Assets/Images/Temp/box_face.png" id="4_6aajr"]
+[ext_resource type="Texture2D" uid="uid://s8pnjsg6oou" path="res://Assets/Images/Temp/street_inf.jpg" id="4_fsybx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6p73"]
 albedo_texture = ExtResource("3_2m3gj")
