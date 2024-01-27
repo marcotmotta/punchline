@@ -6,6 +6,9 @@ const RUN_DURATION_TIME = 1
 
 var is_attacking = false
 var is_running = false
+var is_holding_an_item = false
+
+var item_held = null
 var last_key_pressed = null
 
 # Custom timers.
@@ -56,6 +59,12 @@ func _unhandled_input(event):
 		is_attacking = true
 		$AnimationPlayer.play('Attack')
 
+	if Input.is_action_just_pressed("x"):
+		$Area3D.monitoring = true
+
+	if Input.is_action_just_released("x"):
+		$Area3D.monitoring = false
+
 	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
 		if last_key_pressed == event.keycode and remaining_time_to_press_key > 0:
 			is_running = true
@@ -75,3 +84,10 @@ func _on_animation_player_animation_finished(anim_name):
 	if anim_name == 'Attack':
 		is_attacking = false
 		$AnimationPlayer.play('Idle')
+
+func _on_area_3d_body_entered(body):
+	if body.is_in_group('item') and not is_holding_an_item:
+		is_holding_an_item = true
+		item_held = body
+
+		print("[DEBUG] Holding: ", body)

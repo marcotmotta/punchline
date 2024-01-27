@@ -99,7 +99,7 @@ mesh = SubResource("QuadMesh_ja6x1")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0, 0, 0)
 
-[node name="Cube" type="StaticBody3D" parent="."]
+[node name="Cube" type="StaticBody3D" parent="." groups=["item"]]
 transform = Transform3D(3.90518, 0, 0.865758, 0, 4, 0, -0.865758, 0, 3.90518, 10, 2.5, 17.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube"]
