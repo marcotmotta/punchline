@@ -1,25 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://bikpi7q41hegv"]
+[gd_scene load_steps=8 format=3 uid="uid://bikpi7q41hegv"]
 
 [ext_resource type="PackedScene" uid="uid://cf152vamhl8jl" path="res://Modules/HealthComponent/HealthComponent.tscn" id="1_gjrlu"]
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_p32df"]
 [ext_resource type="PackedScene" uid="uid://7mh176v2c8ia" path="res://Modules/HitboxComponent/HitboxComponent.tscn" id="2_a16wu"]
+[ext_resource type="PackedScene" uid="uid://366devvoskic" path="res://Modules/RangedAttackComponent/RangedAttackComponent.tscn" id="4_voeh8"]
+[ext_resource type="PackedScene" uid="uid://du7kph17rmgu1" path="res://Props/Projectile/Projectile.tscn" id="5_at3u4"]
+[ext_resource type="PackedScene" uid="uid://bw7q336mqrblx" path="res://Enemies/ClownRanged.tscn" id="6_lxts6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t6bdt"]
-size = Vector3(3, 8, 3)
-
-[sub_resource type="BoxMesh" id="BoxMesh_jowrw"]
-size = Vector3(3, 8, 3)
+size = Vector3(2, 6, 2)
 
 [node name="Enemy" type="CharacterBody3D"]
 script = ExtResource("1_p32df")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99004, 0)
-shape = SubResource("BoxShape3D_t6bdt")
+[node name="ClownRanged" parent="." instance=ExtResource("6_lxts6")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.00711, 0)
-mesh = SubResource("BoxMesh_jowrw")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.95659, 0)
+shape = SubResource("BoxShape3D_t6bdt")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_gjrlu")]
 
@@ -27,5 +25,15 @@ mesh = SubResource("BoxMesh_jowrw")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitboxComponent"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.99004, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94356, 0)
 shape = SubResource("BoxShape3D_t6bdt")
+
+[node name="RangedAttackComponent" parent="." instance=ExtResource("4_voeh8")]
+projectile_scene = ExtResource("5_at3u4")
+
+[node name="Marker3D" type="Marker3D" parent="RangedAttackComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.42651, 0)
+
+[node name="PatrolTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="PatrolTimer" to="." method="_on_patrol_timer_timeout"]

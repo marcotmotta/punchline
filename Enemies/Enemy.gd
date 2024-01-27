@@ -1,60 +1,99 @@
 extends CharacterBody3D
 
-enum {
+enum States {
 	IDLE,
 	RUNNING,
+	PATROL,
 	ATTACKING,
 	HURT
 }
 
-var state = IDLE
+var state := States.IDLE
 
-@export var target : CharacterBody3D
+@export var target: CharacterBody3D
 
-func _ready():
+var patrol_direction: Vector3
+
+func _ready() -> void:
 	randomize()
-	set_state(RUNNING)
+	set_state(States.RUNNING)
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	match state:
-		IDLE:
+		States.IDLE:
 			pass
 
-		RUNNING:
+		States.RUNNING:
 			if target:
-				move_to_target()
+				check_end_move_height()
+				move_to_target_height()
 
-		ATTACKING:
+		States.PATROL:
+			move_to_direction(patrol_direction)
+
+		States.ATTACKING:
 			pass
 
-		HURT:
+		States.HURT:
 			pass
 
-func set_state(new_state):
+func set_state(new_state: States) -> void:
 	state = new_state
 
 	match state:
-		IDLE:
+		States.IDLE:
 			#$AnimationPlayer.play('Idle')
 			pass
 
-		RUNNING:
-			#$AnimationPlayer.play('Walk')
+		States.RUNNING:
+			#$AnimationPlayer.play('Idle')
 			pass
 
-		ATTACKING:
+		States.PATROL:
+			patrol_direction = choose_patrol_direction()
+			$PatrolTimer.start()
+
+		States.ATTACKING:
+			if target.global_position.x < global_position.x:
+				$RangedAttackComponent.shoot(Vector3(-1, 0, 0))
+			else:
+				$RangedAttackComponent.shoot(Vector3(1, 0, 0))
+			set_state(States.PATROL)
+
+		States.HURT:
 			pass
 
-		HURT:
-			pass
+func move_to_direction(patrol_direction):
+	var direction = Vector3.ZERO
 
-func move_to_target():
+	direction = patrol_direction.normalized()
+
+	velocity.x = direction.x * 5
+	velocity.z = direction.z * 5 * 2
+	velocity.y = 0
+
+	move_and_slide()
+
+func move_to_target_height() -> void:
 	var direction = Vector3.ZERO
 
 	direction = (target.global_position - global_position).normalized()
 
-	velocity.x = direction.x * 2
-	velocity.z = direction.z * 2 * 2
+	velocity.x = 0 #direction.x * 2
+	velocity.z = 5 * 2
 	velocity.y = 0
 
+	if direction.z < 0:
+		velocity.z *= -1
+
 	move_and_slide()
+
+func check_end_move_height() -> void:
+	if abs(global_position.z - target.global_position.z) <= 3:
+		set_state(States.ATTACKING)
+
+func choose_patrol_direction() -> Vector3:
+	return Vector3(randi_range(-1, 1), 0, randi_range(-1, 1)).normalized()
+
+func _on_patrol_timer_timeout():
+	set_state(States.RUNNING)

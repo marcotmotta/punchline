@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://366devvoskic"]
+
+[ext_resource type="Script" path="res://Modules/RangedAttackComponent/RangedAttackComponent.gd" id="1_0f637"]
+
+[node name="RangedAttackComponent" type="Node3D"]
+script = ExtResource("1_0f637")
