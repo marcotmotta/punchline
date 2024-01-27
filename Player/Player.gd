@@ -57,7 +57,7 @@ func _physics_process(delta):
 func _unhandled_input(event):
 	if Input.is_action_just_pressed("z"):
 		is_attacking = true
-		$AnimationPlayer.play('Attack')
+		$AnimationPlayer.play('Combo_1')
 
 	if Input.is_action_just_pressed("x"):
 		$Area3D.monitoring = true
@@ -81,7 +81,7 @@ func _unhandled_input(event):
 			remaining_time_to_run = 0
 
 func _on_animation_player_animation_finished(anim_name):
-	if anim_name == 'Attack':
+	if anim_name == 'Combo_1':
 		is_attacking = false
 		$AnimationPlayer.play('Idle')
 
