@@ -265,8 +265,8 @@ func _on_animation_player_animation_finished(anim_name):
 		queue_free()
 
 func _on_area_3d_area_entered(area):
-	if area is HitboxComponent:
-		if area.get_parent().is_in_group('player'):
+	if area.get_parent().is_in_group('player'):
+		if area is HitboxComponent:
 			var hitbox:HitboxComponent = area
 			hitbox.take_hit(10, false)
 

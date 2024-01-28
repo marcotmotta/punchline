@@ -1,0 +1,43 @@
+[gd_scene load_steps=11 format=3 uid="uid://bu3e5qv6llpal"]
+
+[ext_resource type="Script" path="res://Props/TrashCan/TrashCan.gd" id="1_hhvxp"]
+[ext_resource type="Texture2D" uid="uid://c8w7i8kx6sert" path="res://Props/TrashCan/Images/pronpt-lixeira-1.png" id="1_qwlt5"]
+[ext_resource type="Texture2D" uid="uid://b38hxy30526n1" path="res://Props/TrashCan/Images/pronpt-lixeira-1-damaged.png" id="3_1n3cp"]
+[ext_resource type="Texture2D" uid="uid://ccx8xyx48yaoa" path="res://Props/TrashCan/Images/pronpt-lixeira-2.png" id="4_3843y"]
+[ext_resource type="Texture2D" uid="uid://bwya7wi7oxmg0" path="res://Props/TrashCan/Images/pronpt-lixeira-2-damaged.png" id="5_b3adl"]
+[ext_resource type="Texture2D" uid="uid://ddjlmkp1y7xwh" path="res://Props/TrashCan/Images/pronpt-lixeira-3.png" id="6_l6m75"]
+[ext_resource type="Texture2D" uid="uid://cyx253xf4wvwa" path="res://Props/TrashCan/Images/pronpt-lixeira-3-damaged.png" id="7_1ehfy"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_aa1oe"]
+height = 4.0
+radius = 1.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxvm1"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_qwlt5")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gmo88"]
+material = SubResource("StandardMaterial3D_lxvm1")
+size = Vector2(5, 5)
+orientation = 2
+
+[node name="TrashCan" type="Area3D" groups=["prop"]]
+script = ExtResource("1_hhvxp")
+textures = Array[Texture]([ExtResource("1_qwlt5"), ExtResource("3_1n3cp"), ExtResource("4_3843y"), ExtResource("5_b3adl"), ExtResource("6_l6m75"), ExtResource("7_1ehfy")])
+hits_to_destroy = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_aa1oe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+mesh = SubResource("PlaneMesh_gmo88")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_aa1oe")

@@ -172,3 +172,5 @@ func _on_area_3d_area_entered(area):
 				hitbox.take_hit(10, true)
 			ATTACK_TYPE.RUNNING:
 				hitbox.take_hit(10, true)
+	elif area.is_in_group('prop'):
+		area.take_hit()

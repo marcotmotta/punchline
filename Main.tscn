@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dvh2ahuc5hvmc"]
+[gd_scene load_steps=18 format=3 uid="uid://dvh2ahuc5hvmc"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bigba"]
 [ext_resource type="PackedScene" uid="uid://bgnq4uxdi5eum" path="res://Player/Player.tscn" id="1_xj1ue"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://1uh8rjuqgnci" path="res://Assets/Images/Temp/box_face.png" id="4_6aajr"]
 [ext_resource type="Texture2D" uid="uid://s8pnjsg6oou" path="res://Assets/Images/Temp/street_inf.jpg" id="4_fsybx"]
 [ext_resource type="PackedScene" uid="uid://blfq1oxyqbthh" path="res://Enemies/Boss.tscn" id="8_uxtvj"]
+[ext_resource type="PackedScene" uid="uid://bu3e5qv6llpal" path="res://Props/TrashCan/TrashCan.tscn" id="9_uji2k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6p73"]
 albedo_texture = ExtResource("3_2m3gj")
@@ -118,3 +119,6 @@ shape = SubResource("BoxShape3D_72sru")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
 mesh = SubResource("BoxMesh_qb5ta")
 skeleton = NodePath("../..")
+
+[node name="TrashCan" parent="." instance=ExtResource("9_uji2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 30)
