@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1506aytymvcj"]
+
+[ext_resource type="Script" path="res://Audio/SoundScene.gd" id="1_jwtub"]
+
+[node name="SoundScene" type="AudioStreamPlayer3D"]
+autoplay = true
+script = ExtResource("1_jwtub")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true

@@ -1,5 +1,13 @@
 extends CharacterBody3D
 
+# sound
+var sound_scene = preload("res://Audio/SoundScene.tscn")
+
+var hurt_sound1 = preload("res://Audio/Hurt_inimigo_1.wav")
+var hurt_sound2 = preload("res://Audio/Hurt_inimigo_2.wav")
+
+var hurt_sounds = [hurt_sound1, hurt_sound2]
+
 enum States {
 	IDLE,
 	RUNNING,
@@ -89,6 +97,7 @@ func set_state(new_state: States) -> void:
 			elif type == 'melee':
 				$AnimationPlayer.play('P2_Idle')
 			elif type == 'boss':
+				$SuperHitBox/SuperHitBox.disabled = true
 				$AnimationPlayer.play('B_Idle')
 
 		States.RUNNING:
@@ -134,10 +143,12 @@ func set_state(new_state: States) -> void:
 				super_attack_direction = 1
 			else:
 				super_attack_direction = -1
-			$SuperAttack.start()
+			$SuperAttack.start(3)
 			$AnimationPlayer.play('B_Super_Attack')
+			$SuperHitBox/SuperHitBox.disabled = false
 
 		States.HURT:
+			play_hurt_sound()
 			$AnimationPlayer.stop()
 			if type == 'ranged':
 				$AnimationPlayer.play('P_Taking_Hit')
@@ -147,6 +158,7 @@ func set_state(new_state: States) -> void:
 				$AnimationPlayer.play('B_Take_Hit')
 
 		States.BIGHURT:
+			play_hurt_sound()
 			if type == 'ranged':
 				$AnimationPlayer.play('P_Taking_Big_Hit')
 			elif type == 'melee':
@@ -236,17 +248,26 @@ func choose_boss_attack_type():
 
 # Called by the "P_Throw_Pie" and "B_Throw" animation.
 func begin_attack():
-	$RangedAttackComponent.begin_attack(target)
+	$RangedAttackComponent.begin_attack(target, 'player')
 
 func set_state_hurt():
 	if state != States.BIGHURT:
-		set_state(States.HURT)
+		if type != 'boss':
+			set_state(States.HURT)
 
 func set_state_big_hurt():
-	set_state(States.BIGHURT)
+	if type != 'boss':
+		set_state(States.BIGHURT)
 
 func set_state_dead():
 	set_state(States.DEAD)
+
+func play_hurt_sound():
+	var sound_instance = sound_scene.instantiate()
+	hurt_sounds.shuffle()
+	sound_instance.stream = hurt_sounds.front()
+	sound_instance.pos = global_position
+	get_parent().add_child(sound_instance)
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == 'P_Throw_Pie' or anim_name == 'P2_Melee_Attack':
@@ -257,9 +278,9 @@ func _on_animation_player_animation_finished(anim_name):
 		set_state(States.SUPER)
 	elif anim_name == 'P_Idle' or anim_name == 'P2_Idle' or anim_name == 'B_Idle':
 		set_state(States.RUNNING)
-	elif anim_name == 'P_Taking_Hit' or anim_name == 'P2_Taking_Hit' or anim_name == 'B_Taking_Hit':
+	elif anim_name == 'P_Taking_Hit' or anim_name == 'P2_Taking_Hit' or anim_name == 'B_Take_Hit':
 		set_state(States.RUNNING)
-	elif anim_name == 'P_Taking_Big_Hit' or anim_name == 'P2_Taking_Big_Hit' or anim_name == 'B_Taking_Big_Hit':
+	elif anim_name == 'P_Taking_Big_Hit' or anim_name == 'P2_Taking_Big_Hit' or anim_name == 'B_Take_Big_Hit':
 		set_state(States.RUNNING)
 	elif anim_name == 'P_Slow_Diyng' or anim_name == 'P2_Slow_Diyng' or anim_name == 'B_Death':
 		queue_free()
@@ -271,4 +292,14 @@ func _on_area_3d_area_entered(area):
 			hitbox.take_hit(10, false)
 
 func _on_super_attack_timeout():
+	$SuperHitBox/SuperHitBox.disabled = true
 	set_state(States.IDLE)
+
+func _on_super_hit_box_area_entered(area):
+	if area is HitboxComponent:
+		if area.get_parent().is_in_group('player'):
+			var hitbox:HitboxComponent = area
+			hitbox.take_hit(15, true)
+			$SuperHitBox/SuperHitBox.disabled = true
+			$SuperAttack.stop()
+			$SuperAttack.start(0.5)

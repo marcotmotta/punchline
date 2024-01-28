@@ -1,0 +1,120 @@
+[gd_scene load_steps=17 format=3 uid="uid://dvh2ahuc5hvmc"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_bigba"]
+[ext_resource type="PackedScene" uid="uid://bgnq4uxdi5eum" path="res://Player/Player.tscn" id="1_xj1ue"]
+[ext_resource type="Texture2D" uid="uid://c4jkv5f00atyu" path="res://Assets/Images/Temp/wall_inf.jpg" id="3_2m3gj"]
+[ext_resource type="PackedScene" uid="uid://dvq1faeu8e0ps" path="res://Enemies/MeleeEnemy.tscn" id="3_4xaxl"]
+[ext_resource type="PackedScene" uid="uid://bikpi7q41hegv" path="res://Enemies/RangedEnemy.tscn" id="3_r75bf"]
+[ext_resource type="Texture2D" uid="uid://1uh8rjuqgnci" path="res://Assets/Images/Temp/box_face.png" id="4_6aajr"]
+[ext_resource type="Texture2D" uid="uid://s8pnjsg6oou" path="res://Assets/Images/Temp/street_inf.jpg" id="4_fsybx"]
+[ext_resource type="PackedScene" uid="uid://blfq1oxyqbthh" path="res://Enemies/Boss.tscn" id="8_uxtvj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6p73"]
+albedo_texture = ExtResource("3_2m3gj")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bawmp"]
+material = SubResource("StandardMaterial3D_f6p73")
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0nape"]
+data = PackedVector3Array(25, -25, 0, -25, -25, 0, 25, 25, 0, -25, -25, 0, -25, 25, 0, 25, 25, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pr2jn"]
+albedo_texture = ExtResource("4_fsybx")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ja6x1"]
+material = SubResource("StandardMaterial3D_pr2jn")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_72sru"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vnee"]
+albedo_texture = ExtResource("4_6aajr")
+uv1_scale = Vector3(3, 2, 2.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qb5ta"]
+material = SubResource("StandardMaterial3D_1vnee")
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_bigba")
+
+[node name="Player" parent="." instance=ExtResource("1_xj1ue")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 12)
+
+[node name="MeleeEnemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5331, 0, 0)
+target = NodePath("../Player")
+
+[node name="RangedEnemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5974, 0, 1.31522)
+target = NodePath("../Player")
+
+[node name="Boss" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_uxtvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6677, 0, 0)
+target = NodePath("../Player")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 13, 45)
+projection = 1
+current = true
+size = 25.0
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 23, 13, 45)
+projection = 1
+size = 25.0
+
+[node name="StaticBody3D1" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -5)
+
+[node name="Background - MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D1"]
+mesh = SubResource("QuadMesh_bawmp")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D1"]
+shape = SubResource("ConcavePolygonShape3D_0nape")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, -0.15, -5)
+
+[node name="Background - MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2"]
+mesh = SubResource("QuadMesh_bawmp")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+shape = SubResource("ConcavePolygonShape3D_0nape")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, -0.15, -5)
+
+[node name="Background - MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D3"]
+mesh = SubResource("QuadMesh_bawmp")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -5)
+shape = SubResource("ConcavePolygonShape3D_0nape")
+
+[node name="Ground - MeshInstance3D1" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -4.37114e-06, 50, 0, -100, -2.18557e-06, 0, 0, -4.5)
+mesh = SubResource("QuadMesh_ja6x1")
+
+[node name="Ground - MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -4.37114e-06, 50, 0, -100, -2.18557e-06, 50, 0, -4.5)
+mesh = SubResource("QuadMesh_ja6x1")
+
+[node name="Ground - MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -4.37114e-06, 50, 0, -100, -2.18557e-06, 100, 0, -4.5)
+mesh = SubResource("QuadMesh_ja6x1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0, 0, 0)
+
+[node name="Cube" type="StaticBody3D" parent="." groups=["item"]]
+transform = Transform3D(3.90518, 0, 0.865758, 0, 4, 0, -0.865758, 0, 3.90518, 10, 2.5, 17.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube"]
+shape = SubResource("BoxShape3D_72sru")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
+mesh = SubResource("BoxMesh_qb5ta")
+skeleton = NodePath("../..")
