@@ -16,6 +16,7 @@ var attack_type_performing = ATTACK_TYPE.NONE
 var attack_combo = 1
 var max_attack_combo = 4
 
+var last_input_dir = Vector2.ZERO
 var last_key_pressed = null
 
 # Custom timers.
@@ -35,10 +36,17 @@ func _process(delta):
 		last_key_pressed = null
 		remaining_time_to_press_key = 0
 
+	if is_attacking:
+		$AnimationPlayer.speed_scale = 1.5
+	else:
+		$AnimationPlayer.speed_scale = 1
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = Vector3.ZERO
+
+	last_input_dir = input_dir
 
 	if !is_attacking:
 		direction.x = input_dir.x
@@ -58,6 +66,10 @@ func _physics_process(delta):
 
 		direction *= WALK_SPEED_MOD
 
+	elif attack_type_performing == ATTACK_TYPE.RUNNING:
+		if last_input_dir: # Need this?
+			pass # direction.x = last_input_dir.x * WALK_SPEED_MOD * RUN_SPEED_MOD
+
 	velocity.x = direction.x
 	velocity.z = direction.z * 2
 	velocity.y = 0
@@ -70,6 +82,7 @@ func _unhandled_input(event):
 			if !is_attacking:
 				is_attacking = true
 				attack_type_performing = ATTACK_TYPE.BASIC
+				$AnimationPlayer.stop()
 				$AnimationPlayer.play('Combo_1')
 			else:
 				if attack_type_performing == ATTACK_TYPE.BASIC:
@@ -78,19 +91,21 @@ func _unhandled_input(event):
 			if !is_attacking:
 				is_attacking = true
 				attack_type_performing = ATTACK_TYPE.RUNNING
-				$AnimationPlayer.play('Change_Attack')
+				$AnimationPlayer.stop()
+				$AnimationPlayer.play('Combo_4')
 
 	if Input.is_action_just_pressed("c"):
 		if !is_attacking:
 			is_attacking = true
 			attack_type_performing = ATTACK_TYPE.STRONG
+			$AnimationPlayer.stop()
 			$AnimationPlayer.play('Super_Attack')
 
 	if Input.is_action_just_pressed("z"):
-		$Area3D.monitoring = true
+		$ItemRangeAreaController/Area3D.monitoring = true
 
 	if Input.is_action_just_released("z"):
-		$Area3D.monitoring = false
+		$ItemRangeAreaController/Area3D.monitoring = false
 
 	if Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
 		if last_key_pressed == event.keycode and remaining_time_to_press_key > 0:
@@ -142,7 +157,11 @@ func _on_animation_player_animation_finished(anim_name):
 		attack_type_performing = ATTACK_TYPE.NONE
 		$AnimationPlayer.play('Idle')
 
-func _on_area_3d_body_entered(body):
+func _on_area_3d_body_entered_item_range(body):
 	if body.is_in_group('item') and not is_holding_an_item:
 		is_holding_an_item = true
 		item_held = body
+
+func _on_area_3d_body_entered_attack_range(body):
+	if body.is_in_group('enemy'):
+		print("Enemy body detected: ", body)
