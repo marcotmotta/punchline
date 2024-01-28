@@ -198,7 +198,7 @@ func move_to_target() -> void:
 
 	direction = (target.global_position - global_position).normalized()
 
-	if direction.x:
+	if direction.x != 0:
 		look_at(global_position + Vector3(-direction.x, 0, 0))
 
 	velocity.x = direction.x * 5
@@ -212,7 +212,7 @@ func move_to_target_height() -> void:
 
 	direction = (target.global_position - global_position).normalized()
 
-	if direction.x:
+	if direction.x != 0:
 		look_at(global_position + Vector3(-direction.x, 0, 0))
 
 	velocity.x = 0 # direction.x * 2
