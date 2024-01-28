@@ -1,6 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://fm1khrqpaq4a"]
+[gd_scene load_steps=50 format=3 uid="uid://fm1khrqpaq4a"]
 
+[ext_resource type="Script" path="res://Levels/Level_1.gd" id="1_1fvnv"]
+[ext_resource type="AudioStream" uid="uid://co38hv3t5bhgv" path="res://Audio/FASE - Pagliacci - INTRO - Final.wav" id="2_dfx0m"]
 [ext_resource type="PackedScene" uid="uid://d3ipqixkewiy3" path="res://Levels/Prefabs/Tile_01_Sky.tscn" id="2_ohvtf"]
+[ext_resource type="AudioStream" uid="uid://4snllwg5mn7k" path="res://Audio/FASE - Pagliacci - Final.wav" id="3_ajot2"]
 [ext_resource type="Texture2D" uid="uid://b703u3xifrkw4" path="res://Assets/Images/Environment/Cena_1/nuvens.png" id="3_mxdg8"]
 [ext_resource type="Texture2D" uid="uid://b5caxbk0glmao" path="res://Assets/Images/Environment/Cena_1/arvore 2-back.png" id="4_lpof7"]
 [ext_resource type="Texture2D" uid="uid://3q1l2d50mwet" path="res://Assets/Images/Environment/Cena_1/arvore 2.png" id="5_51i3u"]
@@ -113,6 +116,16 @@ albedo_texture = ExtResource("4_lpof7")
 material = SubResource("StandardMaterial3D_jye4r")
 
 [node name="Level_1" type="Node3D"]
+script = ExtResource("1_1fvnv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dfx0m")
+volume_db = -10.0
+autoplay = true
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ajot2")
+volume_db = -10.0
 
 [node name="Cena_1" type="Node3D" parent="."]
 
@@ -579,3 +592,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 398.207, 0, 0)
 
 [node name="Tile_01" parent="Cena_3" instance=ExtResource("20_k4ufr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 448.203, 0, 0)
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

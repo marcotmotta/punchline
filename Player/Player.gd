@@ -211,7 +211,7 @@ func set_state_dead():
 
 func _on_area_3d_area_entered(area):
 	if area is HitboxComponent:
-		if area.get_parent().is_in_group('enemy') or area.get_parent().is_in_group('prop'):
+		if area.get_parent().is_in_group('enemy'):
 			var hitbox:HitboxComponent = area
 
 			var sound_instance = sound_scene.instantiate()
@@ -227,5 +227,5 @@ func _on_area_3d_area_entered(area):
 					hitbox.take_hit(10, true)
 				ATTACK_TYPE.RUNNING:
 					hitbox.take_hit(10, true)
-		elif area.is_in_group('prop'):
-			area.take_hit()
+	elif area.is_in_group('prop'):
+		area.take_hit()

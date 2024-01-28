@@ -22,3 +22,9 @@ func take_damage(damage: float, is_big_hit: bool) -> void:
 			get_parent().set_state_big_hurt()
 		else:
 			get_parent().set_state_hurt()
+
+func heal(amount: float) -> void:
+		health += amount
+
+		if health >= MAX_HEALTH:
+			health = MAX_HEALTH
