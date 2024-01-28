@@ -27,6 +27,7 @@ enum BossAttacks {
 }
 
 var state := States.IDLE
+var awaiting = true
 
 @export var target: CharacterBody3D
 @export var type: String
@@ -39,7 +40,7 @@ var super_attack_direction: int
 
 func _ready() -> void:
 	randomize()
-	set_state(States.RUNNING)
+	set_state(States.IDLE)
 
 func _physics_process(delta) -> void:
 	match state:
@@ -237,6 +238,10 @@ func check_manhattan_distance_to_attack(check_x_axis = false) -> void:
 func choose_patrol_direction() -> Vector3:
 	return Vector3(randi_range(-1, 1), 0, randi_range(-1, 1)).normalized()
 
+func start() -> void:
+	awaiting = false
+	set_state(States.RUNNING)
+
 func _on_patrol_timer_timeout():
 	if state == States.PATROL:
 		set_state(States.RUNNING)
@@ -277,7 +282,7 @@ func _on_animation_player_animation_finished(anim_name):
 	elif anim_name == 'B_Idle_Meme':
 		set_state(States.SUPER)
 	elif anim_name == 'P_Idle' or anim_name == 'P2_Idle' or anim_name == 'B_Idle':
-		set_state(States.RUNNING)
+		set_state(States.RUNNING if !awaiting else States.IDLE)
 	elif anim_name == 'P_Taking_Hit' or anim_name == 'P2_Taking_Hit' or anim_name == 'B_Take_Hit':
 		set_state(States.RUNNING)
 	elif anim_name == 'P_Taking_Big_Hit' or anim_name == 'P2_Taking_Big_Hit' or anim_name == 'B_Take_Big_Hit':

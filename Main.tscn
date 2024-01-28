@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvh2ahuc5hvmc"]
+[gd_scene load_steps=14 format=3 uid="uid://dvh2ahuc5hvmc"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bigba"]
 [ext_resource type="PackedScene" uid="uid://bgnq4uxdi5eum" path="res://Player/Player.tscn" id="1_xj1ue"]
@@ -19,40 +19,37 @@ uv1_scale = Vector3(3, 2, 2.5)
 [sub_resource type="BoxMesh" id="BoxMesh_qb5ta"]
 material = SubResource("StandardMaterial3D_1vnee")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dga7b"]
+size = Vector3(1, 50, 50)
+
 [node name="Main" type="Node3D"]
 script = ExtResource("1_bigba")
 
 [node name="Player" parent="." instance=ExtResource("1_xj1ue")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 12)
-
-[node name="MeleeEnemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5331, 0, 0)
-target = NodePath("../Player")
-
-[node name="RangedEnemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5974, 0, 1.31522)
-target = NodePath("../Player")
-
-[node name="Boss" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_uxtvj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6677, 0, 0)
-target = NodePath("../Player")
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 15)
 
 [node name="MainCamera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 0, 15.5, 45)
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 2.5, 15.5, 45)
 projection = 1
 current = true
 size = 30.0
 
 [node name="FixedCamera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 75, 15.5, 45)
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 65, 15.5, 45)
 projection = 1
 size = 30.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0, 0, 0)
 
+[node name="Boss" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_uxtvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6677, 0, 0)
+visible = false
+target = NodePath("../Player")
+
 [node name="Cube" type="StaticBody3D" parent="." groups=["item"]]
 transform = Transform3D(3.90518, 0, 0.865758, 0, 4, 0, -0.865758, 0, 3.90518, 10, 2.5, 17.5)
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube"]
 shape = SubResource("BoxShape3D_72sru")
@@ -64,16 +61,59 @@ skeleton = NodePath("../..")
 [node name="TrashCan" parent="." instance=ExtResource("9_uji2k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 30)
 
-[node name="Level_1" parent="." instance=ExtResource("10_y2vfp")]
+[node name="Level1" parent="." instance=ExtResource("10_y2vfp")]
 
 [node name="Boundaries" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 20)
 
-[node name="LevelBoundary" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "fixed_camera") instance=ExtResource("9_48upe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+[node name="Walls" type="Node3D" parent="Boundaries"]
+
+[node name="StaticBody3D1" type="StaticBody3D" parent="Boundaries/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Walls/StaticBody3D1"]
+shape = SubResource("BoxShape3D_dga7b")
+
+[node name="LevelBoundary1" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "fixed_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
 trigger_stride = 5.0
 boundary_stride = 50.0
 root_scene_node = NodePath("../..")
 main_camera = NodePath("../../MainCamera3D")
 fixed_camera = NodePath("../../FixedCamera3D")
-fixed_camera_position = Vector3(75, 15.5, 45)
+fixed_camera_position = Vector3(65, 15.5, 45)
+awaiting_enemies_node = NodePath("Enemies")
+
+[node name="Enemies" type="Node3D" parent="Boundaries/LevelBoundary1"]
+
+[node name="MeleeEnemy1" parent="Boundaries/LevelBoundary1/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
+target = NodePath("../../../../Player")
+
+[node name="RangedEnemy1" parent="Boundaries/LevelBoundary1/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -5)
+target = NodePath("../../../../Player")
+
+[node name="LevelBoundary2" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "fixed_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 0)
+trigger_stride = 5.0
+boundary_stride = 50.0
+root_scene_node = NodePath("../..")
+main_camera = NodePath("../../MainCamera3D")
+fixed_camera = NodePath("../../FixedCamera3D")
+fixed_camera_position = Vector3(165, 15.5, 45)
+awaiting_enemies_node = NodePath("Enemies")
+
+[node name="Enemies" type="Node3D" parent="Boundaries/LevelBoundary2"]
+
+[node name="MeleeEnemy1" parent="Boundaries/LevelBoundary2/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
+target = NodePath("../../../../Player")
+
+[node name="MeleeEnemy2" parent="Boundaries/LevelBoundary2/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -12.5)
+target = NodePath("../../../../Player")
+
+[node name="RangedEnemy1" parent="Boundaries/LevelBoundary2/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -5)
+target = NodePath("../../../../Player")
