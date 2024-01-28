@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://qhj0bwbkmltv"]
+
+[ext_resource type="PackedScene" uid="uid://b7gpehkbf480i" path="res://Levels/Prefabs/Tile_09_Boss.tscn" id="1_u7nlg"]
+[ext_resource type="Texture2D" uid="uid://dnial2u2w32y2" path="res://Assets/Images/Environment/Cena_Boss/assets-boss.png" id="2_rarm5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6hb6"]
+transparency = 1
+albedo_texture = ExtResource("2_rarm5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_kddco"]
+material = SubResource("StandardMaterial3D_y6hb6")
+
+[node name="BossLevel1" type="Node3D"]
+
+[node name="Tile_01" parent="." instance=ExtResource("1_u7nlg")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(18.0809, 0, 0, 0, 27.6142, 0, 0, 0, 27.6142, -16.1587, 1.56551, -0.272142)
+mesh = SubResource("QuadMesh_kddco")

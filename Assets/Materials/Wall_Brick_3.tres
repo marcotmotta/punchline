@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ct32noxfl8y"]
+
+[ext_resource type="Texture2D" uid="uid://ctd47spqudgdf" path="res://Assets/Images/Environment/Cena_3/predio-2.png" id="1_htbei"]
+
+[resource]
+albedo_color = Color(0.411765, 0.411765, 0.411765, 1)
+albedo_texture = ExtResource("1_htbei")
+metallic_specular = 0.0

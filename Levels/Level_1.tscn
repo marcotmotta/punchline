@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://fm1khrqpaq4a"]
+[gd_scene load_steps=47 format=3 uid="uid://fm1khrqpaq4a"]
 
 [ext_resource type="PackedScene" uid="uid://d3ipqixkewiy3" path="res://Levels/Prefabs/Tile_01_Sky.tscn" id="2_ohvtf"]
 [ext_resource type="Texture2D" uid="uid://b703u3xifrkw4" path="res://Assets/Images/Environment/Cena_1/nuvens.png" id="3_mxdg8"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dxp5df6yxkg6c" path="res://Levels/Prefabs/Tile_02_House.tscn" id="16_twstr"]
 [ext_resource type="PackedScene" uid="uid://cvdbv5co5teva" path="res://Levels/Prefabs/Tile_04_House.tscn" id="18_cf04v"]
 [ext_resource type="PackedScene" uid="uid://b1drp1j0uhnd1" path="res://Levels/Prefabs/Tile_05_House.tscn" id="19_emntg"]
+[ext_resource type="PackedScene" uid="uid://bfolphgqak632" path="res://Levels/Prefabs/Tile_08_Brick.tscn" id="20_k4ufr"]
 [ext_resource type="PackedScene" uid="uid://cyddukhma7f1i" path="res://Levels/Prefabs/Tile_07_Brick.tscn" id="21_fqqm2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8x4n"]
@@ -575,3 +576,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 348.234, 0, 0)
 
 [node name="Tile_03" parent="Cena_3" instance=ExtResource("21_fqqm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 398.207, 0, 0)
+
+[node name="Tile_01" parent="Cena_3" instance=ExtResource("20_k4ufr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 448.203, 0, 0)
