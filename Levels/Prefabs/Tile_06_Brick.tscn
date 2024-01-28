@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwbdv5whtfl3y"]
+
+[ext_resource type="Material" uid="uid://b1mxr4r23m7cw" path="res://Assets/Materials/Wall_Brick_1.tres" id="1_pmmec"]
+[ext_resource type="Material" uid="uid://7hcckld8ql5" path="res://Assets/Materials/Ground_1.tres" id="2_bvubu"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_dvsic"]
+material = ExtResource("1_pmmec")
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1n6f1"]
+data = PackedVector3Array(25, -25, 0, -25, -25, 0, 25, 25, 0, -25, -25, 0, -25, 25, 0, 25, 25, 0)
+
+[sub_resource type="QuadMesh" id="QuadMesh_caocl"]
+material = ExtResource("2_bvubu")
+
+[node name="Tile_01" type="Node3D"]
+
+[node name="Wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -5)
+
+[node name="Background - MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+mesh = SubResource("QuadMesh_dvsic")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall"]
+shape = SubResource("ConcavePolygonShape3D_1n6f1")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, -4.37114e-06, 50, 0, -100, -2.18557e-06, 0, 0, -4.5)
+mesh = SubResource("QuadMesh_caocl")
+skeleton = NodePath("../..")

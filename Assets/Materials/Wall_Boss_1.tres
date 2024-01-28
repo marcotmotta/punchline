@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cih217ah7v0tk"]
+
+[ext_resource type="Texture2D" uid="uid://bo1krj833y6tb" path="res://Assets/Images/Environment/Cena_Boss/parede-boss.jpg" id="1_pexqi"]
+
+[resource]
+albedo_texture = ExtResource("1_pexqi")
