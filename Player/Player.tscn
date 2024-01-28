@@ -6217,7 +6217,7 @@ shape = SubResource("BoxShape3D_omykq")
 
 [node name="ItemRangeAreaController" type="Node3D" parent="."]
 
-[node name="Area3D" type="Area3D" parent="ItemRangeAreaController"]
+[node name="Area3D" type="Area3D" parent="ItemRangeAreaController" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 monitoring = false
 
@@ -6234,5 +6234,5 @@ monitoring = false
 shape = SubResource("BoxShape3D_1qc5l")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="body_entered" from="ItemRangeAreaController/Area3D" to="." method="_on_area_3d_body_entered_item_range"]
+[connection signal="body_entered" from="ItemRangeAreaController/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="area_entered" from="AttackRangeAreaController/Area3D" to="." method="_on_area_3d_area_entered"]

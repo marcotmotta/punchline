@@ -11,8 +11,8 @@ func take_damage(damage: float, is_big_hit: bool) -> void:
 	health -= damage
 
 	if health <= 0:
-		get_parent().setStateDead()
+		get_parent().set_state_dead()
 	elif is_big_hit:
-		get_parent().setStateBigHurt()
+		get_parent().set_state_big_hurt()
 	else:
-		get_parent().setStateHurt()
+		get_parent().set_state_hurt()

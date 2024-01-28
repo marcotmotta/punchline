@@ -157,7 +157,7 @@ func _on_animation_player_animation_finished(anim_name):
 		attack_type_performing = ATTACK_TYPE.NONE
 		$AnimationPlayer.play('Idle')
 
-func _on_area_3d_body_entered_item_range(body):
+func _on_area_3d_body_entered(body):
 	if body.is_in_group('item') and not is_holding_an_item:
 		is_holding_an_item = true
 		item_held = body
