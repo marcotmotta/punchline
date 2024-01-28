@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvh2ahuc5hvmc"]
+[gd_scene load_steps=16 format=3 uid="uid://dvh2ahuc5hvmc"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bigba"]
 [ext_resource type="PackedScene" uid="uid://bgnq4uxdi5eum" path="res://Player/Player.tscn" id="1_xj1ue"]
 [ext_resource type="Texture2D" uid="uid://c4jkv5f00atyu" path="res://Assets/Images/Temp/wall_inf.jpg" id="3_2m3gj"]
-[ext_resource type="PackedScene" uid="uid://bikpi7q41hegv" path="res://Enemies/Enemy.tscn" id="3_r75bf"]
+[ext_resource type="PackedScene" uid="uid://dvq1faeu8e0ps" path="res://Enemies/MeleeEnemy.tscn" id="3_4xaxl"]
+[ext_resource type="PackedScene" uid="uid://bikpi7q41hegv" path="res://Enemies/RangedEnemy.tscn" id="3_r75bf"]
 [ext_resource type="Texture2D" uid="uid://1uh8rjuqgnci" path="res://Assets/Images/Temp/box_face.png" id="4_6aajr"]
 [ext_resource type="Texture2D" uid="uid://s8pnjsg6oou" path="res://Assets/Images/Temp/street_inf.jpg" id="4_fsybx"]
 
@@ -38,8 +39,12 @@ script = ExtResource("1_bigba")
 [node name="Player" parent="." instance=ExtResource("1_xj1ue")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 12)
 
-[node name="Enemy" parent="." node_paths=PackedStringArray("target") groups=["enemy"] instance=ExtResource("3_r75bf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+[node name="MeleeEnemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5331, 0, 0)
+target = NodePath("../Player")
+
+[node name="RangedEnemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5974, 0, 1.31522)
 target = NodePath("../Player")
 
 [node name="Camera3D" type="Camera3D" parent="."]

@@ -2891,6 +2891,21 @@ tracks/60/interp = 1
 tracks/60/loop_wrap = true
 tracks/60/keys = PackedFloat32Array(0, 1, -4.42564e-06, 27.1604, 5.96046e-08)
 
+[sub_resource type="Animation" id="Animation_ulp7g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackRangeAreaController/Area3D:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_b2otr"]
 resource_name = "Run"
 length = 0.566667
@@ -5919,21 +5934,6 @@ tracks/60/path = NodePath("Armature/Skeleton3D:mixamorig_LeftToe_End")
 tracks/60/interp = 1
 tracks/60/loop_wrap = true
 tracks/60/keys = PackedFloat32Array(0, 1, -1.94088e-06, 27.1986, -3.33786e-06)
-
-[sub_resource type="Animation" id="Animation_ulp7g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AttackRangeAreaController/Area3D:monitoring")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7e6mw"]
 _data = {

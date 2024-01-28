@@ -2,7 +2,7 @@ extends Node3D
 
 @export var projectile_scene: PackedScene
 
-func begin_attack(target: CharacterBody3D, setState: Callable, nextState) -> void:
+func begin_attack(target: CharacterBody3D) -> void:
 	if target.global_position.x < global_position.x:
 		shoot(Vector3(-1, 0, 0))
 	else:
