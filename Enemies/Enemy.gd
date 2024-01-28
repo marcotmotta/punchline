@@ -5,7 +5,9 @@ enum States {
 	RUNNING,
 	PATROL,
 	ATTACKING,
-	HURT
+	HURT,
+	BIGHURT,
+	DEAD
 }
 
 var state := States.IDLE
@@ -43,6 +45,9 @@ func _physics_process(delta) -> void:
 		States.HURT:
 			pass
 
+		States.BIGHURT:
+			pass
+
 func set_state(new_state: States) -> void:
 	state = new_state
 
@@ -68,7 +73,23 @@ func set_state(new_state: States) -> void:
 			$AnimationPlayer.play('P_Throw_Pie')
 
 		States.HURT:
-			pass
+			$AnimationPlayer.stop()
+			if type == 'ranged':
+				$AnimationPlayer.play('P_Taking_Hit')
+			elif type == 'melee':
+				$AnimationPlayer.play('P2_Taking_Hit')
+
+		States.BIGHURT:
+			if type == 'ranged':
+				$AnimationPlayer.play('P_Taking_Big_Hit')
+			elif type == 'melee':
+				$AnimationPlayer.play('P2_Taking_Big_Hit')
+
+		States.DEAD:
+			if type == 'ranged':
+				$AnimationPlayer.play('P_Slow_Diyng')
+			elif type == 'melee':
+				$AnimationPlayer.play('P2_Slow_Diyng')
 
 func move_to_direction(patrol_direction):
 	var direction = Vector3.ZERO
@@ -129,6 +150,16 @@ func _on_patrol_timer_timeout():
 
 func begin_attack():
 	$RangedAttackComponent.begin_attack(target)
+
+func setStateHurt():
+	if state != States.BIGHURT:
+		set_state(States.HURT)
+
+func setStateBigHurt():
+	set_state(States.BIGHURT)
+
+func setStateDead():
+	set_state(States.DEAD)
 
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == 'P_Throw_Pie':

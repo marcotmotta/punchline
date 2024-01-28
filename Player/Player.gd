@@ -162,6 +162,13 @@ func _on_area_3d_body_entered_item_range(body):
 		is_holding_an_item = true
 		item_held = body
 
-func _on_area_3d_body_entered_attack_range(body):
-	if body.is_in_group('enemy'):
-		print("Enemy body detected: ", body)
+func _on_area_3d_area_entered(area):
+	if area is HitboxComponent:
+		var hitbox:HitboxComponent = area
+		match attack_type_performing:
+			ATTACK_TYPE.BASIC:
+				hitbox.take_hit(10, false)
+			ATTACK_TYPE.STRONG:
+				hitbox.take_hit(10, true)
+			ATTACK_TYPE.RUNNING:
+				hitbox.take_hit(10, true)
