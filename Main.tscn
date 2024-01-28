@@ -28,15 +28,10 @@ script = ExtResource("1_bigba")
 [node name="Player" parent="." instance=ExtResource("1_xj1ue")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 15)
 
-[node name="MainCamera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 2.5, 15.5, 45)
 projection = 1
 current = true
-size = 30.0
-
-[node name="FixedCamera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 65, 15.5, 45)
-projection = 1
 size = 30.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -74,14 +69,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Walls/StaticBody3D1"]
 shape = SubResource("BoxShape3D_dga7b")
 
-[node name="LevelBoundary1" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "fixed_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
+[node name="LevelBoundary1" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
-trigger_stride = 5.0
-boundary_stride = 50.0
 root_scene_node = NodePath("../..")
-main_camera = NodePath("../../MainCamera3D")
-fixed_camera = NodePath("../../FixedCamera3D")
-fixed_camera_position = Vector3(65, 15.5, 45)
+main_camera = NodePath("../../Camera3D")
 awaiting_enemies_node = NodePath("Enemies")
 
 [node name="Enemies" type="Node3D" parent="Boundaries/LevelBoundary1"]
@@ -94,14 +85,10 @@ target = NodePath("../../../../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -5)
 target = NodePath("../../../../Player")
 
-[node name="LevelBoundary2" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "fixed_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
+[node name="LevelBoundary2" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 0)
-trigger_stride = 5.0
-boundary_stride = 50.0
 root_scene_node = NodePath("../..")
-main_camera = NodePath("../../MainCamera3D")
-fixed_camera = NodePath("../../FixedCamera3D")
-fixed_camera_position = Vector3(165, 15.5, 45)
+main_camera = NodePath("../../Camera3D")
 awaiting_enemies_node = NodePath("Enemies")
 
 [node name="Enemies" type="Node3D" parent="Boundaries/LevelBoundary2"]

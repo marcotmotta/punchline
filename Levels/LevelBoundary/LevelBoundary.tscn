@@ -25,11 +25,13 @@ visible = false
 mesh = SubResource("BoxMesh_hkadk")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_dd8no")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
 shape = SubResource("BoxShape3D_tf0vh")
@@ -39,5 +41,10 @@ disabled = true
 visible = false
 mesh = SubResource("BoxMesh_hkadk")
 skeleton = NodePath("../../StaticBody3D1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 25, 15.5, 25)
+projection = 1
+size = 30.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
