@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+enum ATTACK_TYPE { NONE, BASIC, STRONG, RUNNING }
+
 const WALK_SPEED_MOD = 10
 const RUN_SPEED_MOD = 2
 const RUN_DURATION_TIME = 2
@@ -10,7 +12,7 @@ var is_holding_an_item = false
 var item_held = null
 
 var is_attacking = false
-var attack_type_performed = 0 # 0 - none, 1 - basic, 2 - charged, 3 - running.
+var attack_type_performing = ATTACK_TYPE.NONE
 var attack_combo = 1
 var max_attack_combo = 4
 
@@ -23,6 +25,7 @@ var remaining_time_to_run = 0
 func _ready():
 	pass
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	remaining_time_to_press_key = max(remaining_time_to_press_key - delta, 0)
 	remaining_time_to_run = max(remaining_time_to_run - delta, 0)
@@ -46,6 +49,7 @@ func _physics_process(delta):
 				look_at(global_position + Vector3(-direction.x, 0, 0))
 
 			if is_running:
+				direction.x *= RUN_SPEED_MOD
 				$AnimationPlayer.play('Run')
 			else:
 				$AnimationPlayer.play('Walk')
@@ -53,9 +57,6 @@ func _physics_process(delta):
 			$AnimationPlayer.play('Idle')
 
 		direction *= WALK_SPEED_MOD
-
-		if is_running:
-			direction.x *= RUN_SPEED_MOD
 
 	velocity.x = direction.x
 	velocity.z = direction.z * 2
@@ -67,22 +68,23 @@ func _unhandled_input(event):
 	if Input.is_action_just_pressed("x"):
 		if !is_running:
 			if !is_attacking:
-				$AnimationPlayer.play('Combo_1')
 				is_attacking = true
-				attack_type_performed = 1
-			elif attack_type_performed == 1:
-				attack_combo = min(attack_combo + 1, max_attack_combo)
+				attack_type_performing = ATTACK_TYPE.BASIC
+				$AnimationPlayer.play('Combo_1')
+			else:
+				if attack_type_performing == ATTACK_TYPE.BASIC:
+					attack_combo = min(attack_combo + 1, max_attack_combo)
 		else:
 			if !is_attacking:
-				$AnimationPlayer.play('Change_Attack')
 				is_attacking = true
-				attack_type_performed = 3
+				attack_type_performing = ATTACK_TYPE.RUNNING
+				$AnimationPlayer.play('Change_Attack')
 
 	if Input.is_action_just_pressed("c"):
 		if !is_attacking:
-			$AnimationPlayer.play('Super_Attack')
 			is_attacking = true
-			attack_type_performed = 2
+			attack_type_performing = ATTACK_TYPE.STRONG
+			$AnimationPlayer.play('Super_Attack')
 
 	if Input.is_action_just_pressed("z"):
 		$Area3D.monitoring = true
@@ -107,7 +109,7 @@ func _unhandled_input(event):
 
 func _reset_attack_combo():
 	is_attacking = false
-	attack_type_performed = 0
+	attack_type_performing = ATTACK_TYPE.NONE
 	attack_combo = 1
 	$AnimationPlayer.play('Idle')
 
@@ -137,7 +139,7 @@ func _on_animation_player_animation_finished(anim_name):
 
 	if anim_name in ['Change_Attack', 'Super_Attack']:
 		is_attacking = false
-		attack_type_performed = 0
+		attack_type_performing = ATTACK_TYPE.NONE
 		$AnimationPlayer.play('Idle')
 
 func _on_area_3d_body_entered(body):
