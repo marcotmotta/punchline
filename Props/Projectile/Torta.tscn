@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://du7kph17rmgu1"]
+
+[ext_resource type="Script" path="res://Props/Projectile/Projectile.gd" id="1_y52vo"]
+[ext_resource type="PackedScene" uid="uid://bx8gntepwkta5" path="res://Props/Projectile/TortaModel.tscn" id="2_xuknx"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4v3lr"]
+height = 0.818434
+radius = 1.5
+
+[node name="Torta" type="Area3D"]
+script = ExtResource("1_y52vo")
+
+[node name="torta2" parent="." instance=ExtResource("2_xuknx")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.447799)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("CylinderShape3D_4v3lr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

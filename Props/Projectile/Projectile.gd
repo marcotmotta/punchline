@@ -7,6 +7,7 @@ var speed = 10
 func _ready() -> void:
 	if pos:
 		global_position = pos
+	look_at(global_position + direction)
 
 func _process(delta) -> void:
 	global_position += direction * speed * delta

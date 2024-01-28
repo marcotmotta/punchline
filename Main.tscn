@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dvh2ahuc5hvmc"]
+[gd_scene load_steps=17 format=3 uid="uid://dvh2ahuc5hvmc"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bigba"]
 [ext_resource type="PackedScene" uid="uid://bgnq4uxdi5eum" path="res://Player/Player.tscn" id="1_xj1ue"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bikpi7q41hegv" path="res://Enemies/RangedEnemy.tscn" id="3_r75bf"]
 [ext_resource type="Texture2D" uid="uid://1uh8rjuqgnci" path="res://Assets/Images/Temp/box_face.png" id="4_6aajr"]
 [ext_resource type="Texture2D" uid="uid://s8pnjsg6oou" path="res://Assets/Images/Temp/street_inf.jpg" id="4_fsybx"]
+[ext_resource type="PackedScene" uid="uid://blfq1oxyqbthh" path="res://Enemies/Boss.tscn" id="8_uxtvj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6p73"]
 albedo_texture = ExtResource("3_2m3gj")
@@ -45,6 +46,10 @@ target = NodePath("../Player")
 
 [node name="RangedEnemy" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5974, 0, 1.31522)
+target = NodePath("../Player")
+
+[node name="Boss" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_uxtvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6677, 0, 0)
 target = NodePath("../Player")
 
 [node name="Camera3D" type="Camera3D" parent="."]

@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://nh6vlmqnked3" path="res://Assets/Models/ClownRanged/Palhaco_da_Torta-final-final_Boca_Metallic.1001-Boca_Roughness.png" id="4_ir8g5"]
 [ext_resource type="PackedScene" uid="uid://366devvoskic" path="res://Modules/RangedAttackComponent/RangedAttackComponent.tscn" id="4_voeh8"]
 [ext_resource type="Texture2D" uid="uid://c5t74t8kwvi1c" path="res://Assets/Models/ClownRanged/Palhaco_da_Torta-final-final_Pele_BaseColor.1001-Pele_Alpha.png" id="5_4yv1p"]
-[ext_resource type="PackedScene" uid="uid://du7kph17rmgu1" path="res://Props/Projectile/Projectile.tscn" id="5_at3u4"]
 [ext_resource type="Texture2D" uid="uid://bbhqgg2agfc4i" path="res://Assets/Models/ClownRanged/Palhaco_da_Torta-final-final_Pele_Emission.png" id="6_3gco3"]
 [ext_resource type="Texture2D" uid="uid://wumn8qfy4wsm" path="res://Assets/Models/ClownRanged/Palhaco_da_Torta-final-final_Pele_Metallic.1001-Pele_Roughness.png" id="7_v1s3c"]
 [ext_resource type="Texture2D" uid="uid://gy6glcvcmweu" path="res://Assets/Models/ClownRanged/Palhaco_da_Torta-final-final_Nariz_BaseColor.png" id="8_h7a6d"]
@@ -35,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://gn38e1n8nbs8" path="res://Assets/Models/ClownRanged/Palhaco_da_Torta-final-final_tenis_BaseColor.1001-tenis_Alpha.png" id="29_cx8kt"]
 [ext_resource type="Texture2D" uid="uid://2tx8k67kx2mm" path="res://Assets/Models/ClownRanged/Palhaco_da_Torta-final-final_tenis_Emission.png" id="30_dxwix"]
 [ext_resource type="Texture2D" uid="uid://ceir06b3ck3vd" path="res://Assets/Models/ClownRanged/Palhaco_da_Torta-final-final_tenis_Metallic.1001-tenis_Roughness.png" id="31_64okg"]
+[ext_resource type="PackedScene" uid="uid://du7kph17rmgu1" path="res://Props/Projectile/Torta.tscn" id="35_45r1t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwr14"]
 resource_name = "Boca.005"
@@ -4499,7 +4499,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.94356, 0)
 shape = SubResource("BoxShape3D_t6bdt")
 
 [node name="RangedAttackComponent" parent="." instance=ExtResource("4_voeh8")]
-projectile_scene = ExtResource("5_at3u4")
+projectile_scene = ExtResource("35_45r1t")
 
 [node name="Marker3D" type="Marker3D" parent="RangedAttackComponent"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.89445, 0.749968)

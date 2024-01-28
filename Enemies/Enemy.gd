@@ -36,6 +36,10 @@ func _physics_process(delta) -> void:
 				if target:
 					check_manhattan_distance_to_attack(true) # Check X and Z distances.
 					move_to_target()
+			elif type == 'boss':
+				if target:
+					check_end_move_height()
+					move_to_target_height()
 
 		States.PATROL:
 			move_to_direction(patrol_direction)
@@ -54,13 +58,18 @@ func set_state(new_state: States) -> void:
 
 	match state:
 		States.IDLE:
-			$AnimationPlayer.play('P_Idle')
+			if type == 'boss':
+				$AnimationPlayer.play('B_Idle')
+			else:
+				$AnimationPlayer.play('P_Idle')
 
 		States.RUNNING:
 			if type == 'ranged':
 				$AnimationPlayer.play('P_Aiming_Walk')
 			elif type == 'melee':
 				$AnimationPlayer.play('P2_Walk')
+			elif type == 'boss':
+				$AnimationPlayer.play('B_Walk')
 
 		States.PATROL:
 			patrol_direction = choose_patrol_direction()
@@ -85,18 +94,24 @@ func set_state(new_state: States) -> void:
 				$AnimationPlayer.play('P_Taking_Hit')
 			elif type == 'melee':
 				$AnimationPlayer.play('P2_Taking_Hit')
+			elif type == 'boss':
+				$AnimationPlayer.play('B_Take_Hit')
 
 		States.BIGHURT:
 			if type == 'ranged':
 				$AnimationPlayer.play('P_Taking_Big_Hit')
 			elif type == 'melee':
 				$AnimationPlayer.play('P2_Taking_Big_Hit')
+			elif type == 'boss':
+				$AnimationPlayer.play('B_Take_Big_Hit')
 
 		States.DEAD:
 			if type == 'ranged':
 				$AnimationPlayer.play('P_Slow_Diyng')
 			elif type == 'melee':
 				$AnimationPlayer.play('P2_Slow_Diyng')
+			elif type == 'boss':
+				$AnimationPlayer.play('B_Death')
 
 func move_to_direction(patrol_direction) -> void:
 	var direction = Vector3.ZERO
@@ -177,13 +192,13 @@ func set_state_dead():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == 'P_Throw_Pie' or anim_name == 'P2_Melee_Attack':
 		set_state(States.PATROL)
-	elif anim_name == 'P_Idle' or anim_name == 'P2_Idle':
+	elif anim_name == 'P_Idle' or anim_name == 'P2_Idle' or anim_name == 'B_Idle':
 		set_state(States.RUNNING)
-	elif anim_name == 'P_Taking_Hit' or anim_name == 'P2_Taking_Hit':
+	elif anim_name == 'P_Taking_Hit' or anim_name == 'P2_Taking_Hit' or anim_name == 'B_Taking_Hit':
 		set_state(States.RUNNING)
-	elif anim_name == 'P_Taking_Big_Hit' or anim_name == 'P2_Taking_Big_Hit':
+	elif anim_name == 'P_Taking_Big_Hit' or anim_name == 'P2_Taking_Big_Hit' or anim_name == 'B_Taking_Big_Hit':
 		set_state(States.RUNNING)
-	elif anim_name == 'P_Slow_Diyng' or anim_name == 'P2_Slow_Diyng':
+	elif anim_name == 'P_Slow_Diyng' or anim_name == 'P2_Slow_Diyng' or anim_name == 'B_Death':
 		queue_free()
 
 func _on_area_3d_area_entered(area):
