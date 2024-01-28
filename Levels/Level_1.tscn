@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://fm1khrqpaq4a"]
+[gd_scene load_steps=46 format=3 uid="uid://fm1khrqpaq4a"]
 
 [ext_resource type="PackedScene" uid="uid://d3ipqixkewiy3" path="res://Levels/Prefabs/Tile_01_Sky.tscn" id="2_ohvtf"]
 [ext_resource type="Texture2D" uid="uid://b703u3xifrkw4" path="res://Assets/Images/Environment/Cena_1/nuvens.png" id="3_mxdg8"]
@@ -18,64 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dxp5df6yxkg6c" path="res://Levels/Prefabs/Tile_02_House.tscn" id="16_twstr"]
 [ext_resource type="PackedScene" uid="uid://cvdbv5co5teva" path="res://Levels/Prefabs/Tile_04_House.tscn" id="18_cf04v"]
 [ext_resource type="PackedScene" uid="uid://b1drp1j0uhnd1" path="res://Levels/Prefabs/Tile_05_House.tscn" id="19_emntg"]
-[ext_resource type="PackedScene" uid="uid://cwbdv5whtfl3y" path="res://Levels/Prefabs/Tile_06_Brick.tscn" id="20_3ujuo"]
 [ext_resource type="PackedScene" uid="uid://cyddukhma7f1i" path="res://Levels/Prefabs/Tile_07_Brick.tscn" id="21_fqqm2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqnaw"]
-transparency = 1
-albedo_texture = ExtResource("3_mxdg8")
-
-[sub_resource type="QuadMesh" id="QuadMesh_3tsdx"]
-material = SubResource("StandardMaterial3D_lqnaw")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jye4r"]
-transparency = 1
-albedo_texture = ExtResource("4_lpof7")
-
-[sub_resource type="QuadMesh" id="QuadMesh_gq6ra"]
-material = SubResource("StandardMaterial3D_jye4r")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2b5xh"]
-transparency = 1
-albedo_texture = ExtResource("5_51i3u")
-
-[sub_resource type="QuadMesh" id="QuadMesh_sslsh"]
-material = SubResource("StandardMaterial3D_2b5xh")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ep63o"]
-transparency = 1
-albedo_texture = ExtResource("6_tkaej")
-
-[sub_resource type="QuadMesh" id="QuadMesh_jhjjy"]
-material = SubResource("StandardMaterial3D_ep63o")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w67jv"]
-transparency = 1
-albedo_texture = ExtResource("7_ctfsa")
-
-[sub_resource type="QuadMesh" id="QuadMesh_q5ov0"]
-material = SubResource("StandardMaterial3D_w67jv")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sijry"]
-transparency = 1
-albedo_texture = ExtResource("8_w0rhv")
-
-[sub_resource type="QuadMesh" id="QuadMesh_4mqoc"]
-material = SubResource("StandardMaterial3D_sijry")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rnmkl"]
-transparency = 1
-albedo_texture = ExtResource("9_m5u3o")
-
-[sub_resource type="QuadMesh" id="QuadMesh_5amfu"]
-material = SubResource("StandardMaterial3D_rnmkl")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ge0xb"]
-transparency = 1
-albedo_texture = ExtResource("10_dcept")
-
-[sub_resource type="QuadMesh" id="QuadMesh_em7m4"]
-material = SubResource("StandardMaterial3D_ge0xb")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8x4n"]
 transparency = 1
@@ -112,6 +55,62 @@ albedo_texture = ExtResource("15_msyim")
 [sub_resource type="QuadMesh" id="QuadMesh_gubbk"]
 material = SubResource("StandardMaterial3D_eok8b")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w67jv"]
+transparency = 1
+albedo_texture = ExtResource("7_ctfsa")
+
+[sub_resource type="QuadMesh" id="QuadMesh_q5ov0"]
+material = SubResource("StandardMaterial3D_w67jv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sijry"]
+transparency = 1
+albedo_texture = ExtResource("8_w0rhv")
+
+[sub_resource type="QuadMesh" id="QuadMesh_4mqoc"]
+material = SubResource("StandardMaterial3D_sijry")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rnmkl"]
+transparency = 1
+albedo_texture = ExtResource("9_m5u3o")
+
+[sub_resource type="QuadMesh" id="QuadMesh_5amfu"]
+material = SubResource("StandardMaterial3D_rnmkl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ge0xb"]
+transparency = 1
+albedo_texture = ExtResource("10_dcept")
+
+[sub_resource type="QuadMesh" id="QuadMesh_em7m4"]
+material = SubResource("StandardMaterial3D_ge0xb")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2b5xh"]
+transparency = 1
+albedo_texture = ExtResource("5_51i3u")
+
+[sub_resource type="QuadMesh" id="QuadMesh_sslsh"]
+material = SubResource("StandardMaterial3D_2b5xh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ep63o"]
+transparency = 1
+albedo_texture = ExtResource("6_tkaej")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jhjjy"]
+material = SubResource("StandardMaterial3D_ep63o")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqnaw"]
+transparency = 1
+albedo_texture = ExtResource("3_mxdg8")
+
+[sub_resource type="QuadMesh" id="QuadMesh_3tsdx"]
+material = SubResource("StandardMaterial3D_lqnaw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jye4r"]
+transparency = 1
+albedo_texture = ExtResource("4_lpof7")
+
+[sub_resource type="QuadMesh" id="QuadMesh_gq6ra"]
+material = SubResource("StandardMaterial3D_jye4r")
+
 [node name="Level_1" type="Node3D"]
 
 [node name="Cena_1" type="Node3D" parent="."]
@@ -126,75 +125,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 99.3748, 3.8147e-06, -0.02088
 
 [node name="BG_Assets" type="Node3D" parent="Cena_1"]
 
-[node name="1_Plane" type="Node3D" parent="Cena_1/BG_Assets"]
-
-[node name="Nuvens" type="MeshInstance3D" parent="Cena_1/BG_Assets/1_Plane"]
-transform = Transform3D(149.235, 0, 0, 0, 11.9922, 0, 0, 0, 3.30463, 49.7629, 18.7966, -4.279)
-mesh = SubResource("QuadMesh_3tsdx")
-skeleton = NodePath("../../../..")
-
-[node name="Arvore_4" type="MeshInstance3D" parent="Cena_1/BG_Assets/1_Plane"]
-transform = Transform3D(24.8157, 0, 0, 0, 24.8157, 0, 0, 0, 1.95378, -5.05888, 12.3913, -4.2479)
-mesh = SubResource("QuadMesh_gq6ra")
-
-[node name="Arvore_5" type="MeshInstance3D" parent="Cena_1/BG_Assets/1_Plane"]
-transform = Transform3D(24.8157, 0, 0, 0, 24.8157, 0, 0, 0, 1.95378, 106.595, 12.3913, -4.2479)
-mesh = SubResource("QuadMesh_gq6ra")
-
-[node name="2_Plane" type="Node3D" parent="Cena_1/BG_Assets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.0214611, 0, 0, -4.13717)
-
-[node name="Arvore_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/2_Plane"]
-transform = Transform3D(24.5796, 0, 0, 0, 24.5796, 0, 0, 0, 1.27428, -14.3447, 12.2651, 0)
-mesh = SubResource("QuadMesh_sslsh")
-skeleton = NodePath("../../../..")
-
-[node name="Arvore_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/2_Plane"]
-transform = Transform3D(24.5796, 0, 0, 0, 24.5796, 0, 0, 0, 1.27428, 73.2684, 12.2651, 0)
-mesh = SubResource("QuadMesh_sslsh")
-skeleton = NodePath("../../../..")
-
-[node name="Arvore_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/2_Plane"]
-transform = Transform3D(24.8217, 0, 0, 0, 24.8217, 0, 0, 0, 6.94556, 90.5329, 12.2786, 0.879522)
-mesh = SubResource("QuadMesh_jhjjy")
-
-[node name="3_Plane" type="Node3D" parent="Cena_1/BG_Assets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.0430085, 0.78701, 0, -4.09399)
-
-[node name="Bolo" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
-transform = Transform3D(28.7939, 0, 0, 0, 17.3362, 0, 0, 0, 0.474213, 23.8203, 8.27524, 0.197295)
-mesh = SubResource("QuadMesh_q5ov0")
-
-[node name="Cerca_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
-transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 44.6886, 4.71115, 0.0992355)
-mesh = SubResource("QuadMesh_4mqoc")
-
-[node name="Cerca_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
-transform = Transform3D(25.2837, 0, 0, 0, 9.67042, 0, 0, 0, 0.350015, 67.4823, 4.78836, 0)
-mesh = SubResource("QuadMesh_5amfu")
-
-[node name="Cerca_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
-transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 90.5475, 4.71115, -0.277117)
-mesh = SubResource("QuadMesh_4mqoc")
-
-[node name="Cerca_4" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
-transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 112.268, 4.71115, -0.468224)
-mesh = SubResource("QuadMesh_4mqoc")
-
-[node name="Baloons_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
-transform = Transform3D(16.9214, 0, 0, 0, 28.0842, 0, 0, 0, 16.9214, 12.1011, 12.2678, 0)
-mesh = SubResource("QuadMesh_em7m4")
-
-[node name="Baloons_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
-transform = Transform3D(16.9214, 0, 0, 0, 28.0842, 0, 0, 0, 16.9214, 34.7625, 15.516, 0)
-mesh = SubResource("QuadMesh_em7m4")
-
-[node name="Baloons_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
-transform = Transform3D(16.9214, 0, 0, 0, 28.0842, 0, 0, 0, 16.9214, 122.355, 14.17, -3.8345)
-mesh = SubResource("QuadMesh_em7m4")
-
 [node name="4_Plane" type="Node3D" parent="Cena_1/BG_Assets"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.60927)
+transform = Transform3D(0.486178, 0, 0, 0, 0.485079, 0.0326696, 0, -0.0326696, 0.485079, -21.7054, 0.0434565, -2.07626)
 
 [node name="Grass_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane"]
 transform = Transform3D(8.97874, 0, 0, 0, 5.48729, 0, 0, 0, 5.48729, 106.183, 2.75208, 0)
@@ -240,6 +172,388 @@ mesh = SubResource("QuadMesh_gubbk")
 transform = Transform3D(16.9007, 0, 0, 0, 5.09236, 0, 0, 0, 6.44647, -18.3533, 2.42279, 0)
 mesh = SubResource("QuadMesh_gubbk")
 
+[node name="4_Plane7" type="Node3D" parent="Cena_1/BG_Assets"]
+transform = Transform3D(0.486178, 0, 0, 0, 0.485079, 0.0326696, 0, -0.0326696, 0.485079, -67.6811, 0.0434565, -2.07626)
+
+[node name="Grass_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(8.97874, 0, 0, 0, 5.48729, 0, 0, 0, 5.48729, 106.183, 2.75208, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_10" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(5.29291, 0, 0, 0, 2.76788, 0, 0, 0, 3.23472, 82.3966, 1.30104, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(19.0507, 0, 0, 0, 4.84003, 0, 0, 0, 4.84003, 53.4094, 2.33835, 0)
+mesh = SubResource("QuadMesh_0t4r3")
+
+[node name="Grass_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(17.0433, 0, 0, 0, 6.23826, 0, 0, 0, 6.23826, 116.399, 3.09316, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_7" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(12.9484, 0, 0, 0, 4.73943, 0, 0, 0, 4.73943, 39.7087, 2.33819, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_4" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(14.3656, 0, 0, 0, 5.32172, 0, 0, 0, 9.63058, 90.9668, 2.65085, 0)
+mesh = SubResource("QuadMesh_d1r5l")
+
+[node name="Grass_5" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(19.1154, 0, 0, 0, 5.7597, 0, 0, 0, 7.29126, 8.17688, 2.76401, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_8" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 66.3789, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_11" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 75.7443, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_9" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 99.1952, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_6" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane7"]
+transform = Transform3D(16.9007, 0, 0, 0, 5.09236, 0, 0, 0, 6.44647, -18.3533, 2.42279, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="4_Plane2" type="Node3D" parent="Cena_1/BG_Assets"]
+transform = Transform3D(0.486178, 0, 0, 0, 0.486178, 0, 0, 0, 0.486178, 64.4113, 0, -2.19422)
+
+[node name="Grass_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(8.97874, 0, 0, 0, 5.48729, 0, 0, 0, 5.48729, 106.183, 2.75208, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_10" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(5.29291, 0, 0, 0, 2.76788, 0, 0, 0, 3.23472, 82.3966, 1.30104, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(19.0507, 0, 0, 0, 4.84003, 0, 0, 0, 4.84003, 53.4094, 2.33835, 0)
+mesh = SubResource("QuadMesh_0t4r3")
+
+[node name="Grass_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(17.0433, 0, 0, 0, 6.23826, 0, 0, 0, 6.23826, 116.399, 3.09316, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_7" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(12.9484, 0, 0, 0, 4.73943, 0, 0, 0, 4.73943, 39.7087, 2.33819, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_4" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(14.3656, 0, 0, 0, 5.32172, 0, 0, 0, 9.63058, 90.9668, 2.65085, 0)
+mesh = SubResource("QuadMesh_d1r5l")
+
+[node name="Grass_5" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(19.1154, 0, 0, 0, 5.7597, 0, 0, 0, 7.29126, 8.17688, 2.76401, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_8" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 66.3789, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_11" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 75.7443, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_9" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 99.1952, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_6" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane2"]
+transform = Transform3D(16.9007, 0, 0, 0, 5.09236, 0, 0, 0, 6.44647, -18.3533, 2.42279, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="4_Plane3" type="Node3D" parent="Cena_1/BG_Assets"]
+transform = Transform3D(0.486178, 0, 0, 0, 0.486178, 0, 0, 0, 0.486178, 22.4073, 0, -2.19422)
+
+[node name="Grass_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(8.97874, 0, 0, 0, 5.48729, 0, 0, 0, 5.48729, 106.183, 2.75208, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_10" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(5.29291, 0, 0, 0, 2.76788, 0, 0, 0, 3.23472, 82.3966, 1.30104, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(19.0507, 0, 0, 0, 4.84003, 0, 0, 0, 4.84003, 53.4094, 2.33835, 0)
+mesh = SubResource("QuadMesh_0t4r3")
+
+[node name="Grass_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(17.0433, 0, 0, 0, 6.23826, 0, 0, 0, 6.23826, 116.399, 3.09316, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_7" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(12.9484, 0, 0, 0, 4.73943, 0, 0, 0, 4.73943, 39.7087, 2.33819, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_4" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(14.3656, 0, 0, 0, 5.32172, 0, 0, 0, 9.63058, 90.9668, 2.65085, 0)
+mesh = SubResource("QuadMesh_d1r5l")
+
+[node name="Grass_5" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(19.1154, 0, 0, 0, 5.7597, 0, 0, 0, 7.29126, 8.17688, 2.76401, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_8" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 66.3789, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_11" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 75.7443, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_9" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 99.1952, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_6" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane3"]
+transform = Transform3D(16.9007, 0, 0, 0, 5.09236, 0, 0, 0, 6.44647, -18.3533, 2.42279, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="4_Plane4" type="Node3D" parent="Cena_1/BG_Assets"]
+transform = Transform3D(0.486178, 0, 0, 0, 0.486178, 0, 0, 0, 0.486178, 3.12922, 0, -2.19422)
+
+[node name="Grass_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(8.97874, 0, 0, 0, 5.48729, 0, 0, 0, 5.48729, 106.183, 2.75208, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_10" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(5.29291, 0, 0, 0, 2.76788, 0, 0, 0, 3.23472, 82.3966, 1.30104, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(19.0507, 0, 0, 0, 4.84003, 0, 0, 0, 4.84003, 53.4094, 2.33835, 0)
+mesh = SubResource("QuadMesh_0t4r3")
+
+[node name="Grass_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(17.0433, 0, 0, 0, 6.23826, 0, 0, 0, 6.23826, 116.399, 3.09316, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_7" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(12.9484, 0, 0, 0, 4.73943, 0, 0, 0, 4.73943, 39.7087, 2.33819, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_4" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(14.3656, 0, 0, 0, 5.32172, 0, 0, 0, 9.63058, 90.9668, 2.65085, 0)
+mesh = SubResource("QuadMesh_d1r5l")
+
+[node name="Grass_5" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(19.1154, 0, 0, 0, 5.7597, 0, 0, 0, 7.29126, 8.17688, 2.76401, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_8" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 66.3789, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_11" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 75.7443, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_9" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 99.1952, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_6" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane4"]
+transform = Transform3D(16.9007, 0, 0, 0, 5.09236, 0, 0, 0, 6.44647, -18.3533, 2.42279, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="4_Plane5" type="Node3D" parent="Cena_1/BG_Assets"]
+transform = Transform3D(0.486178, 0, 0, 0, 0.486178, 0, 0, 0, 0.486178, 39.5602, 0, -2.19422)
+
+[node name="Grass_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(8.97874, 0, 0, 0, 5.48729, 0, 0, 0, 5.48729, 106.183, 2.75208, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_10" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(5.29291, 0, 0, 0, 2.76788, 0, 0, 0, 3.23472, 82.3966, 1.30104, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(19.0507, 0, 0, 0, 4.84003, 0, 0, 0, 4.84003, 53.4094, 2.33835, 0)
+mesh = SubResource("QuadMesh_0t4r3")
+
+[node name="Grass_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(17.0433, 0, 0, 0, 6.23826, 0, 0, 0, 6.23826, 116.399, 3.09316, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_7" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(12.9484, 0, 0, 0, 4.73943, 0, 0, 0, 4.73943, 39.7087, 2.33819, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_4" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(14.3656, 0, 0, 0, 5.32172, 0, 0, 0, 9.63058, 90.9668, 2.65085, 0)
+mesh = SubResource("QuadMesh_d1r5l")
+
+[node name="Grass_5" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(19.1154, 0, 0, 0, 5.7597, 0, 0, 0, 7.29126, 8.17688, 2.76401, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_8" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 66.3789, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_11" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 75.7443, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_9" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 99.1952, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_6" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane5"]
+transform = Transform3D(16.9007, 0, 0, 0, 5.09236, 0, 0, 0, 6.44647, -18.3533, 2.42279, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="4_Plane6" type="Node3D" parent="Cena_1/BG_Assets"]
+transform = Transform3D(0.486178, 0, 0, 0, 0.486178, 0, 0, 0, 0.486178, 11.9334, 0, -2.19422)
+
+[node name="Grass_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(8.97874, 0, 0, 0, 5.48729, 0, 0, 0, 5.48729, 106.183, 2.75208, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_10" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(5.29291, 0, 0, 0, 2.76788, 0, 0, 0, 3.23472, 82.3966, 1.30104, 0)
+mesh = SubResource("QuadMesh_3bbsr")
+
+[node name="Grass_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(19.0507, 0, 0, 0, 4.84003, 0, 0, 0, 4.84003, 53.4094, 2.33835, 0)
+mesh = SubResource("QuadMesh_0t4r3")
+
+[node name="Grass_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(17.0433, 0, 0, 0, 6.23826, 0, 0, 0, 6.23826, 116.399, 3.09316, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_7" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(12.9484, 0, 0, 0, 4.73943, 0, 0, 0, 4.73943, 39.7087, 2.33819, 0)
+mesh = SubResource("QuadMesh_3ql3r")
+
+[node name="Grass_4" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(14.3656, 0, 0, 0, 5.32172, 0, 0, 0, 9.63058, 90.9668, 2.65085, 0)
+mesh = SubResource("QuadMesh_d1r5l")
+
+[node name="Grass_5" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(19.1154, 0, 0, 0, 5.7597, 0, 0, 0, 7.29126, 8.17688, 2.76401, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_8" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 66.3789, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_11" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 75.7443, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_9" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(9.76848, 0, 0, 0, 2.94335, 0, 0, 0, 3.72602, 99.1952, 1.38779, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="Grass_6" type="MeshInstance3D" parent="Cena_1/BG_Assets/4_Plane6"]
+transform = Transform3D(16.9007, 0, 0, 0, 5.09236, 0, 0, 0, 6.44647, -18.3533, 2.42279, 0)
+mesh = SubResource("QuadMesh_gubbk")
+
+[node name="3_Plane" type="Node3D" parent="Cena_1/BG_Assets"]
+transform = Transform3D(0.594224, 0, 0, 0, 0.594224, 0, 0, 0, 0.0255567, 7.19314, 0, -3.03325)
+
+[node name="Bolo" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(28.7939, 0, 0, 0, 17.3362, 0, 0, 0, 0.474213, 34.0177, 8.27524, 0.197296)
+mesh = SubResource("QuadMesh_q5ov0")
+
+[node name="Cerca_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 52.6483, 4.71115, 0.0992432)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Cerca_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(25.2837, 0, 0, 0, 9.67042, 0, 0, 0, 0.350015, 75.63, 4.78836, 0)
+mesh = SubResource("QuadMesh_5amfu")
+
+[node name="Cerca_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 97.7901, 4.71115, -0.277115)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Cerca_4" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 119.511, 4.71115, -0.468216)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Cerca_5" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 141.292, 4.71115, -0.468216)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Cerca_6" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 163.215, 4.71115, -0.468216)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Cerca_7" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 185.212, 4.71115, -0.468216)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Cerca_8" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 30.8344, 4.71115, -11.9372)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Cerca_9" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, 8.74372, 4.71115, -2.84552)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Cerca_10" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, -13.2559, 4.71115, -2.84552)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Cerca_11" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, -34.8627, 4.71115, -2.84552)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Cerca_12" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(22.4753, 0, 0, 0, 9.15508, 0, 0, 0, 0.279731, -56.9068, 4.71115, -2.84552)
+mesh = SubResource("QuadMesh_4mqoc")
+
+[node name="Baloons_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(16.9214, 0, 0, 0, 28.0842, 0, 0, 0, 16.9214, 20.8626, 12.2678, -18.8109)
+mesh = SubResource("QuadMesh_em7m4")
+
+[node name="Baloons_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(16.9214, 0, 0, 0, 28.0842, 0, 0, 0, 16.9214, 47.5117, 16.2182, -33.8428)
+mesh = SubResource("QuadMesh_em7m4")
+
+[node name="Baloons_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/3_Plane"]
+transform = Transform3D(16.9214, 0, 0, 0, 28.0842, 0, 0, 0, 16.9214, 122.355, 14.17, -3.8345)
+mesh = SubResource("QuadMesh_em7m4")
+
+[node name="2_Plane" type="Node3D" parent="Cena_1/BG_Assets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.0214611, 0, -0.895649, -7.33054)
+
+[node name="Arvore_1" type="MeshInstance3D" parent="Cena_1/BG_Assets/2_Plane"]
+transform = Transform3D(24.5796, 0, 0, 0, 24.5796, 0, 0, 0, 1.27428, -14.3447, 12.2651, -15.5439)
+mesh = SubResource("QuadMesh_sslsh")
+skeleton = NodePath("../../../..")
+
+[node name="Arvore_2" type="MeshInstance3D" parent="Cena_1/BG_Assets/2_Plane"]
+transform = Transform3D(24.5796, 0, 0, 0, 24.5796, 0, 0, 0, 1.27428, 73.2684, 12.2651, 0)
+mesh = SubResource("QuadMesh_sslsh")
+skeleton = NodePath("../../../..")
+
+[node name="Arvore_3" type="MeshInstance3D" parent="Cena_1/BG_Assets/2_Plane"]
+transform = Transform3D(24.8217, 0, 0, 0, 24.8217, 0, 0, 0, 6.94556, 90.5329, 12.2786, 0.879517)
+mesh = SubResource("QuadMesh_jhjjy")
+
+[node name="1_Plane" type="Node3D" parent="Cena_1/BG_Assets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.486238, -3.04668)
+
+[node name="Nuvens" type="MeshInstance3D" parent="Cena_1/BG_Assets/1_Plane"]
+transform = Transform3D(149.235, 0, 0, 0, 11.9922, 0, 0, 0, 3.30463, 49.7629, 15.0441, -4.279)
+mesh = SubResource("QuadMesh_3tsdx")
+skeleton = NodePath("../../../..")
+
+[node name="Arvore_4" type="MeshInstance3D" parent="Cena_1/BG_Assets/1_Plane"]
+transform = Transform3D(24.8157, 0, 0, 0, 24.8157, 0, 0, 0, 1.95378, -5.05888, 12.3913, -4.2461)
+mesh = SubResource("QuadMesh_gq6ra")
+
+[node name="Arvore_5" type="MeshInstance3D" parent="Cena_1/BG_Assets/1_Plane"]
+transform = Transform3D(24.8157, 0, 0, 0, 24.8157, 0, 0, 0, 1.95378, 106.595, 12.3913, -4.24705)
+mesh = SubResource("QuadMesh_gq6ra")
+
 [node name="Cena_2" type="Node3D" parent="."]
 
 [node name="Tile_01" parent="Cena_2" instance=ExtResource("16_1qiie")]
@@ -255,8 +569,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 248.669, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 298.303, 0, 0)
 
 [node name="Cena_3" type="Node3D" parent="."]
-
-[node name="Tile_01" parent="Cena_3" instance=ExtResource("20_3ujuo")]
 
 [node name="Tile_02" parent="Cena_3" instance=ExtResource("21_fqqm2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 348.234, 0, 0)

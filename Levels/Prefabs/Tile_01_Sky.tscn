@@ -19,6 +19,7 @@ material = ExtResource("2_wioso")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15, -4.45366)
 
 [node name="Background - MeshInstance3D" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.62755)
 mesh = SubResource("QuadMesh_dvsic")
 skeleton = NodePath("../../..")
 
