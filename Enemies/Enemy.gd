@@ -5,9 +5,17 @@ enum States {
 	RUNNING,
 	PATROL,
 	ATTACKING,
+	PRESUPER,
+	SUPER,
 	HURT,
 	BIGHURT,
 	DEAD
+}
+
+enum BossAttacks {
+	MELEE,
+	RANGED,
+	SUPER
 }
 
 var state := States.IDLE
@@ -17,6 +25,9 @@ var state := States.IDLE
 
 var remaining_idle_time: float
 var patrol_direction: Vector3
+
+var boss_attack_type: BossAttacks
+var super_attack_direction: int
 
 func _ready() -> void:
 	randomize()
@@ -37,15 +48,30 @@ func _physics_process(delta) -> void:
 					check_manhattan_distance_to_attack(true) # Check X and Z distances.
 					move_to_target()
 			elif type == 'boss':
-				if target:
-					check_end_move_height()
-					move_to_target_height()
+				match boss_attack_type:
+					BossAttacks.MELEE:
+						pass
+					BossAttacks.SUPER:
+						if target:
+							check_manhattan_distance_to_attack()
+							move_to_target_height()
+					BossAttacks.RANGED:
+						if target:
+							check_manhattan_distance_to_attack()
+							move_to_target_height()
 
 		States.PATROL:
 			move_to_direction(patrol_direction)
 
 		States.ATTACKING:
 			pass
+
+		States.PRESUPER:
+			pass
+
+		States.SUPER:
+			if type == 'boss' and boss_attack_type == BossAttacks.SUPER:
+				move_to_direction(Vector3(super_attack_direction, 0, 0), true)
 
 		States.HURT:
 			pass
@@ -58,10 +84,12 @@ func set_state(new_state: States) -> void:
 
 	match state:
 		States.IDLE:
-			if type == 'boss':
-				$AnimationPlayer.play('B_Idle')
-			else:
+			if type == 'ranged':
 				$AnimationPlayer.play('P_Idle')
+			elif type == 'melee':
+				$AnimationPlayer.play('P2_Idle')
+			elif type == 'boss':
+				$AnimationPlayer.play('B_Idle')
 
 		States.RUNNING:
 			if type == 'ranged':
@@ -69,6 +97,7 @@ func set_state(new_state: States) -> void:
 			elif type == 'melee':
 				$AnimationPlayer.play('P2_Walk')
 			elif type == 'boss':
+				boss_attack_type = choose_boss_attack_type()
 				$AnimationPlayer.play('B_Walk')
 
 		States.PATROL:
@@ -87,6 +116,26 @@ func set_state(new_state: States) -> void:
 				$AnimationPlayer.play('P_Throw_Pie')
 			elif type == 'melee':
 				$AnimationPlayer.play('P2_Melee_Attack')
+			elif type == 'boss':
+				match boss_attack_type:
+					BossAttacks.MELEE:
+						pass
+					BossAttacks.SUPER:
+						set_state(States.PRESUPER)
+					BossAttacks.RANGED:
+						$AnimationPlayer.play('B_Throw')
+
+		States.PRESUPER:
+			$AnimationPlayer.play_backwards('B_Idle_Meme')
+
+		States.SUPER:
+			var direction = (target.global_position - global_position).normalized()
+			if direction.x > 0:
+				super_attack_direction = 1
+			else:
+				super_attack_direction = -1
+			$SuperAttack.start()
+			$AnimationPlayer.play('B_Super_Attack')
 
 		States.HURT:
 			$AnimationPlayer.stop()
@@ -113,7 +162,7 @@ func set_state(new_state: States) -> void:
 			elif type == 'boss':
 				$AnimationPlayer.play('B_Death')
 
-func move_to_direction(patrol_direction) -> void:
+func move_to_direction(patrol_direction, is_boss_super = false) -> void:
 	var direction = Vector3.ZERO
 
 	direction = patrol_direction.normalized()
@@ -121,8 +170,13 @@ func move_to_direction(patrol_direction) -> void:
 	if direction.x:
 		look_at(global_position + Vector3(-direction.x, 0, 0))
 
-	velocity.x = direction.x * 5
-	velocity.z = direction.z * 5 * 2
+	var speed = 5
+	
+	if is_boss_super:
+		speed *= 2
+
+	velocity.x = direction.x * speed
+	velocity.z = direction.z * speed * 2
 	velocity.y = 0
 
 	move_and_slide()
@@ -175,7 +229,12 @@ func _on_patrol_timer_timeout():
 	if state == States.PATROL:
 		set_state(States.RUNNING)
 
-# Called by the "P_Throw_Pie" animation.
+func choose_boss_attack_type():
+	var array = [BossAttacks.RANGED, BossAttacks.SUPER]
+	array.shuffle()
+	return array.front()
+
+# Called by the "P_Throw_Pie" and "B_Throw" animation.
 func begin_attack():
 	$RangedAttackComponent.begin_attack(target)
 
@@ -192,6 +251,10 @@ func set_state_dead():
 func _on_animation_player_animation_finished(anim_name):
 	if anim_name == 'P_Throw_Pie' or anim_name == 'P2_Melee_Attack':
 		set_state(States.PATROL)
+	elif anim_name == 'B_Throw':
+		set_state(States.RUNNING)
+	elif anim_name == 'B_Idle_Meme':
+		set_state(States.SUPER)
 	elif anim_name == 'P_Idle' or anim_name == 'P2_Idle' or anim_name == 'B_Idle':
 		set_state(States.RUNNING)
 	elif anim_name == 'P_Taking_Hit' or anim_name == 'P2_Taking_Hit' or anim_name == 'B_Taking_Hit':
@@ -206,3 +269,6 @@ func _on_area_3d_area_entered(area):
 		if area.get_parent().is_in_group('player'):
 			var hitbox:HitboxComponent = area
 			hitbox.take_hit(10, false)
+
+func _on_super_attack_timeout():
+	set_state(States.IDLE)
