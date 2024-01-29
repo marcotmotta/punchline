@@ -31,7 +31,8 @@ current = true
 size = 30.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0, 0, 0)
+transform = Transform3D(0.866025, -0.469846, 0.17101, 0, 0.34202, 0.939693, -0.5, -0.813798, 0.296198, 0, 10, 10)
+shadow_enabled = true
 
 [node name="Level1" parent="." instance=ExtResource("10_y2vfp")]
 

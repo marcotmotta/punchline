@@ -292,8 +292,10 @@ func _on_animation_player_animation_finished(anim_name):
 		set_state(States.RUNNING)
 	elif anim_name == 'P_Taking_Big_Hit' or anim_name == 'P2_Taking_Big_Hit' or anim_name == 'B_Take_Big_Hit':
 		set_state(States.RUNNING)
-	elif anim_name == 'P_Slow_Diyng' or anim_name == 'P2_Slow_Diyng' or anim_name == 'B_Death':
+	elif anim_name == 'P_Slow_Diyng' or anim_name == 'P2_Slow_Diyng':
 		queue_free()
+	elif anim_name == 'B_Death':
+		get_tree().change_scene_to_file('res://VictoryScreen.tscn')
 
 func _on_area_3d_area_entered(area):
 	if area.get_parent().is_in_group('player'):

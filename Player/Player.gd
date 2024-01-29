@@ -211,6 +211,7 @@ func set_state_big_hurt():
 
 func set_state_dead():
 	is_hurt = true
+	get_tree().change_scene_to_file('res://GameOverScreen.tscn')
 
 func _on_area_3d_area_entered(area):
 	if area is HitboxComponent:

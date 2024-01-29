@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://darhpa7m2cid5"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_ivjxk"]
+[ext_resource type="Texture2D" uid="uid://cilprpd6ub3p" path="res://Assets/Images/UI/tela-win.png" id="2_w4mld"]
+
+[node name="CreditScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ivjxk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_w4mld")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Bt_BackToMenu" type="Button" parent="CanvasLayer/TextureRect"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = 96.0
+offset_right = 9.0
+offset_bottom = 186.0
+grow_horizontal = 2
+grow_vertical = 2
+action_mode = 0
+
+[connection signal="button_down" from="CanvasLayer/TextureRect/Bt_BackToMenu" to="." method="_on_bt_back_to_menu_button_down"]
