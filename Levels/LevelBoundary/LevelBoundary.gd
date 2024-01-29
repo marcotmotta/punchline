@@ -20,6 +20,8 @@ func _process(delta):
 
 		$StaticBody3D2/CollisionShape3D.set_deferred('disabled', true)
 
+		set_process(false)
+
 func _on_area_3d_body_entered(body):
 	if body.is_in_group('player'):
 		$Area3D.set_deferred('monitoring', false)
@@ -38,7 +40,7 @@ func camera_smooth_change(from, to):
 
 	cam.projection = Camera3D.PROJECTION_ORTHOGONAL
 	cam.size = from.size
-	cam.position = from.position
+	cam.global_position = from.global_position
 	cam.rotation = from.rotation
 
 	root_scene_node.add_child(cam)
