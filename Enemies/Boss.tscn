@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://blfq1oxyqbthh"]
+[gd_scene load_steps=61 format=3 uid="uid://blfq1oxyqbthh"]
 
 [ext_resource type="Texture2D" uid="uid://chwbpvetj7d8v" path="res://Assets/Models/Boss/Boss (1)_Skin.001_BaseColor.1001-Skin.001_Alpha.png" id="1_mb0yw"]
 [ext_resource type="Script" path="res://Enemies/Enemy.gd" id="1_wkx23"]
@@ -6267,6 +6267,34 @@ size = Vector3(3.5, 9, 3.5)
 height = 8.0
 radius = 4.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xmyh7"]
+bg_color = Color(0, 0, 0, 0.392157)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvjgx"]
+bg_color = Color(0.831373, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 1
+
 [node name="Boss" type="CharacterBody3D" groups=["enemy"]]
 script = ExtResource("1_wkx23")
 type = "boss"
@@ -6602,6 +6630,34 @@ one_shot = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.0763, 0)
 shape = SubResource("CylinderShape3D_ilngx")
 disabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -55.0
+offset_right = 400.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_xmyh7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_cvjgx")
+value = 50.0
+show_percentage = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="SuperAttack" to="." method="_on_super_attack_timeout"]
