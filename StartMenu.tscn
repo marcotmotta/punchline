@@ -1,0 +1,112 @@
+[gd_scene load_steps=12 format=3 uid="uid://dx8hiv46eaynw"]
+
+[ext_resource type="Script" path="res://Menu.gd" id="1_gtlta"]
+[ext_resource type="Texture2D" uid="uid://lvlxcov1f0dx" path="res://Assets/Images/UI/capa-jogo.jpg" id="2_pwl8w"]
+[ext_resource type="Texture2D" uid="uid://47fxfa7wluu8" path="res://Assets/Images/UI/play-boton.png" id="4_64cs3"]
+[ext_resource type="Texture2D" uid="uid://svguuga6ko1b" path="res://Assets/Images/UI/exit-boton-2.png" id="5_tp5oe"]
+[ext_resource type="Texture2D" uid="uid://df5l0p3bmqk8l" path="res://Assets/Images/UI/credit-boton.png" id="6_yghhg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ccp0"]
+texture = ExtResource("4_64cs3")
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1e7tr"]
+texture = ExtResource("4_64cs3")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+axis_stretch_vertical = 2
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_04pmv"]
+texture = ExtResource("5_tp5oe")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k4gt8"]
+texture = ExtResource("5_tp5oe")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cnisd"]
+texture = ExtResource("6_yghhg")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x1opo"]
+texture = ExtResource("6_yghhg")
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="StartMenu" type="Control"]
+layout_mode = 3
+anchor_right = 3.331
+anchor_bottom = 3.349
+offset_right = -0.312012
+offset_bottom = -0.1521
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gtlta")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorBG" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pwl8w")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Bt_Play" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = 51.0
+offset_right = -138.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(37.3344, 28.0977)
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_6ccp0")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1e7tr")
+
+[node name="Bt_Exit" type="Button" parent="CanvasLayer"]
+offset_left = 25.0
+offset_top = 18.0
+offset_right = 33.0
+offset_bottom = 26.0
+scale = Vector2(8.545, 7.405)
+theme_override_styles/normal = SubResource("StyleBoxTexture_04pmv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_k4gt8")
+
+[node name="Bt_Credits" type="Button" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -102.0
+offset_top = 18.0
+offset_right = -94.0
+offset_bottom = 26.0
+grow_horizontal = 0
+scale = Vector2(8.545, 8.395)
+theme_override_styles/normal = SubResource("StyleBoxTexture_cnisd")
+theme_override_styles/hover = SubResource("StyleBoxTexture_x1opo")
+action_mode = 0
+
+[connection signal="button_down" from="CanvasLayer/Bt_Play" to="." method="_on_bt_play_button_down"]
+[connection signal="button_down" from="CanvasLayer/Bt_Exit" to="." method="_on_bt_exit_button_down"]
+[connection signal="button_down" from="CanvasLayer/Bt_Credits" to="." method="_on_bt_credits_button_down"]
