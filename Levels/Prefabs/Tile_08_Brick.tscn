@@ -25,7 +25,13 @@ mesh = SubResource("QuadMesh_dvsic")
 skeleton = NodePath("../../..")
 
 [node name="Background - MeshInstance3D2" type="MeshInstance3D" parent="Wall"]
-transform = Transform3D(1.17115, 0, 0, 0, 1.48826, 0, 0, 0, 1.48826, 29.123, 0, 48.6264)
+transform = Transform3D(1.1, 0, 0, 0, 1.398, 0, 0, 0, 1.398, 28.086, 0, 50.0518)
+material_override = ExtResource("1_r8ibr")
+mesh = SubResource("QuadMesh_dvsic")
+skeleton = NodePath("../../..")
+
+[node name="Background - MeshInstance3D3" type="MeshInstance3D" parent="Wall"]
+transform = Transform3D(1.1, 0, 0, 0, 1.398, 0, 0, 0, 1.398, 28.086, 0, 46.2969)
 material_override = ExtResource("1_r8ibr")
 mesh = SubResource("QuadMesh_dvsic")
 skeleton = NodePath("../../..")

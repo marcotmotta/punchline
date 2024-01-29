@@ -1,10 +1,11 @@
-[gd_scene load_steps=50 format=3 uid="uid://fm1khrqpaq4a"]
+[gd_scene load_steps=53 format=3 uid="uid://fm1khrqpaq4a"]
 
 [ext_resource type="Script" path="res://Levels/Level_1.gd" id="1_1fvnv"]
 [ext_resource type="AudioStream" uid="uid://co38hv3t5bhgv" path="res://Audio/FASE - Pagliacci - INTRO - Final.wav" id="2_dfx0m"]
 [ext_resource type="PackedScene" uid="uid://d3ipqixkewiy3" path="res://Levels/Prefabs/Tile_01_Sky.tscn" id="2_ohvtf"]
 [ext_resource type="AudioStream" uid="uid://4snllwg5mn7k" path="res://Audio/FASE - Pagliacci - Final.wav" id="3_ajot2"]
 [ext_resource type="Texture2D" uid="uid://b703u3xifrkw4" path="res://Assets/Images/Environment/Cena_1/nuvens.png" id="3_mxdg8"]
+[ext_resource type="AudioStream" uid="uid://bnmom40recmy" path="res://Audio/Me deixa dormir - Final.wav" id="4_343hq"]
 [ext_resource type="Texture2D" uid="uid://b5caxbk0glmao" path="res://Assets/Images/Environment/Cena_1/arvore 2-back.png" id="4_lpof7"]
 [ext_resource type="Texture2D" uid="uid://3q1l2d50mwet" path="res://Assets/Images/Environment/Cena_1/arvore 2.png" id="5_51i3u"]
 [ext_resource type="Texture2D" uid="uid://vk7tlnu6p2h4" path="res://Assets/Images/Environment/Cena_1/arvore 1.png" id="6_tkaej"]
@@ -23,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://b1drp1j0uhnd1" path="res://Levels/Prefabs/Tile_05_House.tscn" id="19_emntg"]
 [ext_resource type="PackedScene" uid="uid://bfolphgqak632" path="res://Levels/Prefabs/Tile_08_Brick.tscn" id="20_k4ufr"]
 [ext_resource type="PackedScene" uid="uid://cyddukhma7f1i" path="res://Levels/Prefabs/Tile_07_Brick.tscn" id="21_fqqm2"]
+[ext_resource type="PackedScene" uid="uid://qhj0bwbkmltv" path="res://Levels/Boss_Level_1.tscn" id="24_gjepb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8x4n"]
 transparency = 1
@@ -115,6 +117,9 @@ albedo_texture = ExtResource("4_lpof7")
 [sub_resource type="QuadMesh" id="QuadMesh_gq6ra"]
 material = SubResource("StandardMaterial3D_jye4r")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_vtxim"]
+size = Vector3(1, 50, 100)
+
 [node name="Level_1" type="Node3D"]
 script = ExtResource("1_1fvnv")
 
@@ -125,6 +130,10 @@ autoplay = true
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ajot2")
+volume_db = -10.0
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_343hq")
 volume_db = -10.0
 
 [node name="Cena_1" type="Node3D" parent="."]
@@ -593,4 +602,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 398.207, 0, 0)
 [node name="Tile_01" parent="Cena_3" instance=ExtResource("20_k4ufr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 448.203, 0, 0)
 
+[node name="BossLevel1" parent="." instance=ExtResource("24_gjepb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 547.347, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 470.947, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_vtxim")
+
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -38,6 +38,9 @@ var patrol_direction: Vector3
 var boss_attack_type: BossAttacks
 var super_attack_direction: int
 
+var hit_damage = 10
+var super_damage = 10
+
 func _ready() -> void:
 	randomize()
 	set_state(States.IDLE)
@@ -240,6 +243,8 @@ func choose_patrol_direction() -> Vector3:
 
 func start() -> void:
 	awaiting = false
+	if type == 'boss':
+		$CanvasLayer/Control/HealthBar.visible = true
 	set_state(States.RUNNING)
 
 func _on_patrol_timer_timeout():
@@ -294,7 +299,7 @@ func _on_area_3d_area_entered(area):
 	if area.get_parent().is_in_group('player'):
 		if area is HitboxComponent:
 			var hitbox:HitboxComponent = area
-			hitbox.take_hit(10, false)
+			hitbox.take_hit(hit_damage, false)
 
 func _on_super_attack_timeout():
 	$SuperHitBox/SuperHitBox.disabled = true
@@ -304,7 +309,7 @@ func _on_super_hit_box_area_entered(area):
 	if area is HitboxComponent:
 		if area.get_parent().is_in_group('player'):
 			var hitbox:HitboxComponent = area
-			hitbox.take_hit(15, true)
+			hitbox.take_hit(super_damage, true)
 			$SuperHitBox/SuperHitBox.disabled = true
 			$SuperAttack.stop()
 			$SuperAttack.start(0.5)

@@ -16,7 +16,7 @@ func _process(delta):
 			break
 
 	if release_boundary:
-		camera_smooth_change($Camera3D, main_camera)
+		camera_smooth_change($Camera3D, main_camera, true)
 
 		$StaticBody3D2/CollisionShape3D.set_deferred('disabled', true)
 
@@ -35,7 +35,7 @@ func _on_area_3d_body_entered(body):
 		for child in awaiting_enemies_node.get_children():
 			child.start()
 
-func camera_smooth_change(from, to):
+func camera_smooth_change(from, to, fast = false):
 	var cam = Camera3D.new()
 
 	cam.projection = Camera3D.PROJECTION_ORTHOGONAL
@@ -47,7 +47,10 @@ func camera_smooth_change(from, to):
 	cam.current = true
 
 	var camera_tween = create_tween()
-	camera_tween.tween_property(cam, 'position', to.global_position, 1).set_trans(Tween.TRANS_SINE)
+	if fast:
+		camera_tween.tween_property(cam, 'position', to.global_position, 0.2).set_trans(Tween.TRANS_SINE)
+	else:
+		camera_tween.tween_property(cam, 'position', to.global_position, 1).set_trans(Tween.TRANS_SINE)
 	camera_tween.tween_callback(camera_tween_callback.bind(to))
 
 func camera_tween_callback(to):

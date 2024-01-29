@@ -9,6 +9,10 @@ extends Area3D
 var hits_taken = 0
 
 func _ready():
+	var new_material = material.duplicate()
+	material = new_material
+	$MeshInstance3D.set_surface_override_material(0,new_material)
+
 	if len(textures) > 0:
 		material.albedo_texture = textures[0]
 

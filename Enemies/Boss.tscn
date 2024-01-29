@@ -6606,6 +6606,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.58468, 0)
 shape = SubResource("BoxShape3D_t6knv")
 
 [node name="HealthComponent" parent="." instance=ExtResource("28_mwk7v")]
+MAX_HEALTH = 500.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("29_iaikl")]
 health_component = NodePath("../HealthComponent")
@@ -6642,6 +6643,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer/Control"]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

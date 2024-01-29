@@ -1,32 +1,25 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvh2ahuc5hvmc"]
+[gd_scene load_steps=11 format=3 uid="uid://dvh2ahuc5hvmc"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_bigba"]
 [ext_resource type="PackedScene" uid="uid://bgnq4uxdi5eum" path="res://Player/Player.tscn" id="1_xj1ue"]
 [ext_resource type="PackedScene" uid="uid://dvq1faeu8e0ps" path="res://Enemies/MeleeEnemy.tscn" id="3_4xaxl"]
 [ext_resource type="PackedScene" uid="uid://bikpi7q41hegv" path="res://Enemies/RangedEnemy.tscn" id="3_r75bf"]
-[ext_resource type="Texture2D" uid="uid://1uh8rjuqgnci" path="res://Assets/Images/Temp/box_face.png" id="4_6aajr"]
 [ext_resource type="PackedScene" uid="uid://blfq1oxyqbthh" path="res://Enemies/Boss.tscn" id="8_uxtvj"]
 [ext_resource type="PackedScene" uid="uid://chrs3yib2nalt" path="res://Levels/LevelBoundary/LevelBoundary.tscn" id="9_48upe"]
 [ext_resource type="PackedScene" uid="uid://bu3e5qv6llpal" path="res://Props/TrashCan/TrashCan.tscn" id="9_uji2k"]
 [ext_resource type="PackedScene" uid="uid://fm1khrqpaq4a" path="res://Levels/Level_1.tscn" id="10_y2vfp"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_72sru"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vnee"]
-albedo_texture = ExtResource("4_6aajr")
-uv1_scale = Vector3(3, 2, 2.5)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qb5ta"]
-material = SubResource("StandardMaterial3D_1vnee")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_dga7b"]
 size = Vector3(1, 50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ngfmq"]
+size = Vector3(200, 50, 1)
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_bigba")
 
 [node name="Player" parent="." instance=ExtResource("1_xj1ue")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.5, 0, 15)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 428.738, 0, 15)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21644, 0, -0.21644, 0.976296, 2.5, 15.5, 45)
@@ -36,25 +29,6 @@ size = 30.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.353553, 0.612372, 0, 0.866025, 0.5, -0.707107, -0.353553, 0.612372, 0, 0, 0)
-
-[node name="Boss" parent="." node_paths=PackedStringArray("target") instance=ExtResource("8_uxtvj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6677, 0, 0)
-visible = false
-target = NodePath("../Player")
-
-[node name="Cube" type="StaticBody3D" parent="." groups=["item"]]
-transform = Transform3D(3.90518, 0, 0.865758, 0, 4, 0, -0.865758, 0, 3.90518, 10, 2.5, 17.5)
-visible = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube"]
-shape = SubResource("BoxShape3D_72sru")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Cube"]
-mesh = SubResource("BoxMesh_qb5ta")
-skeleton = NodePath("../..")
-
-[node name="TrashCan" parent="." instance=ExtResource("9_uji2k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 30)
 
 [node name="Level1" parent="." instance=ExtResource("10_y2vfp")]
 
@@ -69,8 +43,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/Walls/StaticBody3D1"]
 shape = SubResource("BoxShape3D_dga7b")
 
+[node name="BottomWall" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 23)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/BottomWall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 256.704, 0, 0)
+shape = SubResource("BoxShape3D_ngfmq")
+
+[node name="BottomWall2" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -23.0914)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/BottomWall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 566.218, 0, -0.418911)
+shape = SubResource("BoxShape3D_ngfmq")
+
+[node name="BottomWall3" type="StaticBody3D" parent="Boundaries"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 408.518, 0, -23.0914)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Boundaries/BottomWall3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 166.204, 0, -0.418911)
+shape = SubResource("BoxShape3D_ngfmq")
+
 [node name="LevelBoundary1" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0388, 0, 0)
 root_scene_node = NodePath("../..")
 main_camera = NodePath("../../Camera3D")
 awaiting_enemies_node = NodePath("Enemies")
@@ -78,15 +73,15 @@ awaiting_enemies_node = NodePath("Enemies")
 [node name="Enemies" type="Node3D" parent="Boundaries/LevelBoundary1"]
 
 [node name="MeleeEnemy1" parent="Boundaries/LevelBoundary1/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2766, 0, -20.8348)
 target = NodePath("../../../../Player")
 
 [node name="RangedEnemy1" parent="Boundaries/LevelBoundary1/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.8079, 0, -0.062624)
 target = NodePath("../../../../Player")
 
 [node name="LevelBoundary2" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 140, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.7368, 0, 0)
 root_scene_node = NodePath("../..")
 main_camera = NodePath("../../Camera3D")
 awaiting_enemies_node = NodePath("Enemies")
@@ -94,13 +89,124 @@ awaiting_enemies_node = NodePath("Enemies")
 [node name="Enemies" type="Node3D" parent="Boundaries/LevelBoundary2"]
 
 [node name="MeleeEnemy1" parent="Boundaries/LevelBoundary2/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.1953, 0, 11.8738)
 target = NodePath("../../../../Player")
 
 [node name="MeleeEnemy2" parent="Boundaries/LevelBoundary2/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, -12.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.011, 0, -12.5)
 target = NodePath("../../../../Player")
 
 [node name="RangedEnemy1" parent="Boundaries/LevelBoundary2/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 6.6481)
 target = NodePath("../../../../Player")
+
+[node name="LevelBoundary3" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.095, 0, 0)
+root_scene_node = NodePath("../..")
+main_camera = NodePath("../../Camera3D")
+awaiting_enemies_node = NodePath("Enemies")
+
+[node name="Enemies" type="Node3D" parent="Boundaries/LevelBoundary3"]
+
+[node name="RangedEnemy" parent="Boundaries/LevelBoundary3/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.1384, 0, -19.8594)
+target = NodePath("../../../../Player")
+
+[node name="RangedEnemy2" parent="Boundaries/LevelBoundary3/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1761, 0, 18.5565)
+target = NodePath("../../../../Player")
+
+[node name="MeleeEnemy" parent="Boundaries/LevelBoundary3/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3423, 0, 0)
+target = NodePath("../../../../Player")
+
+[node name="LevelBoundary4" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 272.504, 0, 0)
+root_scene_node = NodePath("../..")
+main_camera = NodePath("../../Camera3D")
+awaiting_enemies_node = NodePath("Enemies")
+
+[node name="Enemies" type="Node3D" parent="Boundaries/LevelBoundary4"]
+
+[node name="RangedEnemy" parent="Boundaries/LevelBoundary4/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.0617, 0, -20.0018)
+target = NodePath("../../../../Player")
+
+[node name="MeleeEnemy2" parent="Boundaries/LevelBoundary4/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0521, 0, -9.85378)
+target = NodePath("../../../../Player")
+
+[node name="MeleeEnemy3" parent="Boundaries/LevelBoundary4/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.5791, 0, 14.178)
+target = NodePath("../../../../Player")
+
+[node name="RangedEnemy2" parent="Boundaries/LevelBoundary4/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2729, 0, 16.5365)
+target = NodePath("../../../../Player")
+
+[node name="LevelBoundary5" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 363.886, 0, 0)
+root_scene_node = NodePath("../..")
+main_camera = NodePath("../../Camera3D")
+awaiting_enemies_node = NodePath("Enemies")
+
+[node name="Enemies" type="Node3D" parent="Boundaries/LevelBoundary5"]
+
+[node name="MeleeEnemy" parent="Boundaries/LevelBoundary5/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9059, 0, 15.5033)
+target = NodePath("../../../../Player")
+
+[node name="MeleeEnemy2" parent="Boundaries/LevelBoundary5/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_4xaxl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5434, 0, -7.05231)
+target = NodePath("../../../../Player")
+
+[node name="RangedEnemy" parent="Boundaries/LevelBoundary5/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.8592, 0, -20.0858)
+target = NodePath("../../../../Player")
+
+[node name="RangedEnemy2" parent="Boundaries/LevelBoundary5/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.6253, 0, 16.937)
+target = NodePath("../../../../Player")
+
+[node name="RangedEnemy3" parent="Boundaries/LevelBoundary5/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("3_r75bf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.834, 0, -19.3257)
+target = NodePath("../../../../Player")
+
+[node name="LevelBoundary6" parent="Boundaries" node_paths=PackedStringArray("root_scene_node", "main_camera", "awaiting_enemies_node") instance=ExtResource("9_48upe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 524.656, 0, 0)
+root_scene_node = NodePath("../..")
+main_camera = NodePath("../../Camera3D")
+awaiting_enemies_node = NodePath("Enemies")
+
+[node name="Enemies" type="Node3D" parent="Boundaries/LevelBoundary6"]
+
+[node name="Boss" parent="Boundaries/LevelBoundary6/Enemies" node_paths=PackedStringArray("target") instance=ExtResource("8_uxtvj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.4732, 0, -1.19379)
+target = NodePath("../../../../Player")
+
+[node name="TrashCan2" parent="." instance=ExtResource("9_uji2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.78, 0, 0)
+
+[node name="TrashCan3" parent="." instance=ExtResource("9_uji2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.637, 0, 0)
+
+[node name="TrashCan4" parent="." instance=ExtResource("9_uji2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 241.477, 0, 0)
+
+[node name="TrashCan5" parent="." instance=ExtResource("9_uji2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 344.362, 0, 0)
+
+[node name="TrashCan6" parent="." instance=ExtResource("9_uji2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 380.958, 0, 0)
+
+[node name="TrashCan7" parent="." instance=ExtResource("9_uji2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 424.59, 0, 0)
+
+[node name="TrashCan" parent="." instance=ExtResource("9_uji2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4812, 0, 0)
+
+[node name="TrashCan8" parent="." instance=ExtResource("9_uji2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.1585, 0, 0)
+
+[node name="TrashCan9" parent="." instance=ExtResource("9_uji2k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 554.548, 0, 0)

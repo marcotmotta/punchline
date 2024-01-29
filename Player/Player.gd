@@ -15,8 +15,11 @@ var hurt_sound = preload("res://Audio/Hurt_3.wav")
 enum ATTACK_TYPE { NONE, BASIC, STRONG, RUNNING }
 
 const WALK_SPEED_MOD = 10
-const RUN_SPEED_MOD = 2
+const RUN_SPEED_MOD = 1.5
 const RUN_DURATION_TIME = 2
+
+var punch_damage = 15
+var running_damage = 30
 
 var is_running = false
 
@@ -222,10 +225,10 @@ func _on_area_3d_area_entered(area):
 
 			match attack_type_performing:
 				ATTACK_TYPE.BASIC:
-					hitbox.take_hit(10, false)
+					hitbox.take_hit(punch_damage, false)
 				ATTACK_TYPE.STRONG:
-					hitbox.take_hit(10, true)
+					hitbox.take_hit(punch_damage, true)
 				ATTACK_TYPE.RUNNING:
-					hitbox.take_hit(10, true)
+					hitbox.take_hit(running_damage, true)
 	elif area.is_in_group('prop'):
 		area.take_hit()
