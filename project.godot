@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="GGJ 2"
+config/name="Punchline"
+config/description="Punchline"
+config/version="1.0.0"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.901961, 0.901961, 0.901961, 1)
+boot_splash/image="res://Assets/Images/hotmisto.png"
+config/icon="res://Assets/Images/image.png"
 
 [input]
 
